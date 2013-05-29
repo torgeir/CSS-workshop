@@ -118,6 +118,58 @@
         float: right;
         padding-top: 2em;
       }
+	  
+	  .specificity {
+		margin: 0 auto;
+		padding: 1em;
+		overflow: auto;
+		width: 16.5em;
+		position: relative;
+		background-color: white;
+		border-radius: 5px;
+	  }
+	  
+	  .specificity li{
+		display: block;
+		float: left;
+		border: 1px solid #aaa;
+		border-width: 1px 0px 1px 1px;
+		margin-top: 0.75em;
+		padding: 0.7em;
+		position: relative;
+		width: 2.2em;
+		text-align: center;
+		
+	  }
+	  .specificity li:first-child{
+		border-radius: 5px 0 0 5px;
+	  }
+	  .specificity li:last-child{
+		border-width: 1px;
+		border-radius: 0 5px 5px 0;
+	  }
+	  .specificity li:before{
+		font-size: 0.9em;
+		color: #aaa;
+		display: block;
+		position: absolute;
+		top: -1.5em;
+		left: 0;
+		font-family: 'Yanone Kaffeesatz';
+	  }
+	  .specificity li:nth-child(1):before{
+		content: 'style';
+	  }
+	  .specificity li:nth-child(2):before{
+		content: 'id';
+	  }
+	  .specificity li:nth-child(3):before{
+		content: 'class';
+	  }
+	  .specificity li:nth-child(4):before{
+		content: 'element';
+	  }
+	  
     </style>
   </head>
   <body>
@@ -152,7 +204,7 @@ class: center, middle, inverse
 ```
 
 ```css
-p{
+p {
 	color: red;
 }
 ```
@@ -162,10 +214,123 @@ p{
 # Selectors
 
 ```css
-p#anId.aClass:pseudo[attribute]{
+p#anId.aClass:pseudo[attribute] {
 	/* Properties */
 }
 ```
+
+---
+
+# Specificity
+
+<ul class="specificity">
+	<li>0
+	<li>0
+	<li>0
+	<li>1
+</ul>
+
+---
+
+#Examples
+
+```css
+p {
+	color: red;
+}
+```
+
+<ul class="specificity">
+	<li>0
+	<li>0
+	<li>0
+	<li>1
+</ul>
+
+---
+
+#Examples
+
+```css
+p {
+	color: red;
+}
+```
+
+<ul class="specificity">
+	<li>0
+	<li>0
+	<li>0
+	<li>1
+</ul>
+
+---
+
+#Examples
+
+```css
+\.highlighted {
+	color: yellow;
+}
+```
+
+<ul class="specificity">
+	<li>0
+	<li>0
+	<li>1
+	<li>0
+</ul>
+
+---
+
+#Examples
+
+```css
+p.error {
+	color: red;
+}
+```
+
+<ul class="specificity">
+	<li>0
+	<li>0
+	<li>1
+	<li>1
+</ul>
+
+---
+
+#Examples
+
+```css
+.highlight.important {
+	color: orange;
+}
+```
+
+<ul class="specificity">
+	<li>0
+	<li>0
+	<li>2
+	<li>0
+</ul>
+
+---
+
+#Examples
+
+```css
+#menu {
+	color: blue;
+}
+```
+
+<ul class="specificity">
+	<li>0
+	<li>1
+	<li>0
+	<li>0
+</ul>
 
     </textarea>
     <div id="slideshow"></div>
