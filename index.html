@@ -4,7 +4,10 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Remark</title>
     <script src="http://gnab.github.com/remark/downloads/remark-0.4.6.min.js" type="text/javascript">
-      {"highlightStyle": "monokai"}
+      {
+        "highlightStyle": "monokai",
+        "ratio": "16:9"
+      }
     </script>
     <script type="text/javascript">
       var hljs = remark.highlighter.engine();
@@ -174,7 +177,10 @@
   </head>
   <body>
     <textarea id="source">
+name: inverse
 class: center, middle, inverse
+---
+template: inverse
 
 # CSS-workshop
 
@@ -182,20 +188,26 @@ class: center, middle, inverse
 
 # Agenda
 
-1. Introduction to CSS
-2. Layout
-3. Structure
-4. Tips & Tricks
+## 1. Introduction to CSS
+## 2. Layout
+## 3. Structure
+## 4. Tips & Tricks
+## 5. The new hotness
+
+---
+template: inverse
+
+# Introduction to CSS
 
 ---
 
 # HTML
 
-* Everything is boxes
+* Everything is a box
 
 ---
 
-# 
+#
 
 ```html
 <div>
@@ -343,6 +355,88 @@ p.error {
 	<li>0
 </ul>
 
+---
+
+# Cascading properties
+
+Some css selector
+
+```css
+\.alert-box {
+  border: 1px solid red;
+}
+```
+
+and later the same selector again..
+
+```css
+\.alert-box {
+  padding: 1em;
+}
+```
+
+---
+
+# Cascading properties
+
+The defined properties cascade!
+
+```css
+\.alert-box {
+  border: 1px solid red;
+  padding: 1em;
+}
+```
+
+TODO bilde av cascading
+
+---
+
+# Inherited properties
+
+Some properties have a value `inherit`
+
+E.g.
+
+```css
+font-size: inherit;
+color: inherit;
+```
+
+### But
+`backcround-color` is not!
+
+```css
+background-color: transparent;
+```
+
+You can force it, however
+
+```css
+background-color: inherit;
+```
+
+---
+template: inverse
+
+# Layout
+
+---
+template: inverse
+
+# Structure
+
+---
+template: inverse
+
+# Tips & tricks
+
+---
+template: inverse
+
+# The new hotness
+
+---
     </textarea>
     <div id="slideshow"></div>
   </body>
