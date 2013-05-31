@@ -3301,7 +3301,7 @@ Parser.prototype.parse = function (src) {
         break;
       case 'content_start':
         tag = token.block ? 'div' : 'span';
-        slide.source += '&lt;' + tag + ' class="' + token['class'] + '"&gt;';
+        slide.source += '&lt;' + tag + ' class="' + token['class'].replace(/\./g, ' ') + '"&gt;';
         break;
       case 'content_end':
         tag = token.block ? 'div' : 'span';
