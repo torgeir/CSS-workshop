@@ -46,6 +46,7 @@
       .pull-left {
         float: left;
         width: 47%;
+		clear: left;
       }
       .pull-right {
         float: right;
@@ -122,6 +123,16 @@
         padding-top: 2em;
       }
 	  
+	  .largerFont {
+		font-size: 2em;
+	  }
+	  
+	  .full-width {
+		float: left;
+		display: block;
+		width: 100%;
+	  }
+	  
 	  .specificity {
 		margin: 0 auto;
 		padding: 1em;
@@ -172,6 +183,34 @@
 	  .specificity li:nth-child(4):before{
 		content: 'element';
 	  }
+	  
+	  .arrowDown {
+		height: 12em;
+		width: 4em;
+		margin: 0 2em;
+		background-color: black;
+		position: absolute;
+		top: 8em;
+		left: 20em;
+	  }
+	  .arrowDown:after{
+	    content: '';
+	  	width: 0; 
+		height: 0; 
+		border-left: 4em solid transparent;
+		border-right: 4em solid transparent;		
+		border-top: 4em solid black;
+		margin: 0 -2em;
+		position: absolute;
+		bottom: -3.9em;
+	  }
+	  .arrowDown .arrowDescription {
+	    font-size: 2em;
+		position: absolute;
+		left: 3em;
+		margin: 2em 0;
+	  }
+	  
 	  
     </style>
   </head>
@@ -241,119 +280,99 @@ p#anId.aClass:pseudo[attribute] {
 ## `<style>`
 ## inline `style` attribute
 
+<div class="arrowDown">
+	<span class="arrowDescription">Increasing priority</span>
+</div>
 
 ---
 
 # Specificity
 
+<ul class="specificity largerFont">
+	<li>0
+	<li>0
+	<li>0
+	<li>0
+</ul>
+
+
+---
+
+#Specificity
+.pull-left[
+	
+	p {
+		color: red;
+	}
+]
+.pull-right[
 <ul class="specificity">
 	<li>0
 	<li>0
 	<li>0
 	<li>1
 </ul>
+]
 
----
+.pull-left[
 
-#Specificity
-
-```css
-p {
-	color: red;
-}
-```
-
-<ul class="specificity">
-	<li>0
-	<li>0
-	<li>0
-	<li>1
-</ul>
-
----
-
-#Specificity
-
-```css
-p {
-	color: red;
-}
-```
-
-<ul class="specificity">
-	<li>0
-	<li>0
-	<li>0
-	<li>1
-</ul>
-
----
-
-#Specificity
-
-```css
-\.highlighted {
-	color: yellow;
-}
-```
-
+	\.highlighted {
+		color: yellow;
+	}
+]
+.pull-right[
 <ul class="specificity">
 	<li>0
 	<li>0
 	<li>1
 	<li>0
 </ul>
+]
 
----
+.pull-left[
 
-#Specificity
-
-```css
-p.error {
-	color: red;
-}
-```
-
+	p.error {
+		color: red;
+	}
+]
+.pull-right[
 <ul class="specificity">
 	<li>0
 	<li>0
 	<li>1
 	<li>1
 </ul>
+]
 
----
+.pull-left[
 
-#Specificity
-
-```css
-.highlight.important {
-	color: orange;
-}
-```
-
+	.highlight.important {
+		color: orange;
+	}
+]
+.pull-right[
 <ul class="specificity">
 	<li>0
 	<li>0
 	<li>2
 	<li>0
 </ul>
+]
 
----
+.pull-left[
 
-#Specificity
-
-```css
-#menu {
-	color: blue;
-}
-```
-
+	#menu {
+		color: blue;
+	}
+]
+.pull-right[
 <ul class="specificity">
 	<li>0
 	<li>1
 	<li>0
 	<li>0
 </ul>
+]
 
 ---
 
@@ -422,6 +441,53 @@ template: inverse
 # Layout
 
 ---
+
+# Display
+
+* `block`
+* `inline`
+* `none`
+* `inline-block`
+
+---
+
+# Display - `block`
+
+* Some elements has `block` as default
+	* `<div>`, `<p>`, `<form>`
+* Starts at new line
+* Streches out horizontally as far as it can
+* Can modify width
+
+---
+
+# Display - `inline`
+
+* Some elements has `inline` as default
+	* `<span>`, `<a>`, `<img>`
+* Does not disrupt flow
+* No defined width. Uses the amount of space that the content needs
+* Width is not modifiable
+
+---
+
+# Display - `none`
+
+* Some elements has `none` as default
+	* `<script>`, `<head>`
+* Used to hide element	
+* Rendered as no element existed
+
+---
+
+# Display - `inline-block`
+
+* No elements has `none` as default
+* Act like `inline` element	but can have a defined width and height as `block`
+* IE8+ (IE7 is partly supported)
+
+---
+
 template: inverse
 
 # Structure
