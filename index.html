@@ -211,6 +211,43 @@
 		margin: 2em 0;
 	  }
 	  
+	  .boxmodel {
+		padding: 2.5em;
+		float: left;
+	  }
+	  .boxmodel.margin{
+		background-color: red;
+	  }
+	  .boxmodel.border{
+		background-color: black;
+	  }
+	  .boxmodel.padding{
+		background-color: blue;
+	  }
+	  .boxmodel.text{
+		background-color: yellow;
+		height: 2.5em;
+		width: 2.5em;
+		text-indent: -9999px;
+	  }
+	  
+	.redmark{
+		background-color: red;
+	}
+	.blackmark{
+		background-color: black;
+	}
+	.bluemark{
+		background-color: blue;
+	}
+	.yellowmark{
+		background-color: yellow;
+	}
+	.boxmodel-description {
+		font-size: 2em;
+		margin-left: 5em;
+		padding: 0.2em 1em;
+	}
 	  
     </style>
   </head>
@@ -485,6 +522,24 @@ template: inverse
 * No elements has `none` as default
 * Act like `inline` element	but can have a defined width and height as `block`
 * IE8+ (IE7 is partly supported)
+
+---
+
+# The box model
+
+.push-left[
+.boxmodel.margin.red-mark[.boxmodel.border.black-mark[.boxmodel.padding.blue-mark[.boxmodel.text.yellow-mark[Boxmodel]]]]
+]
+.push-right[
+
+.boxmodel-description.redmark[`margin`]
+
+.boxmodel-description.blackmark[`border`]
+
+.boxmodel-description.bluemark[`padding`]
+
+.boxmodel-description.yellowmark[`content`]
+]
 
 ---
 
