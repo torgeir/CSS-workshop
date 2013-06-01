@@ -5,8 +5,18 @@
     <title>Remark</title>
 
     <style type="text/css">
-      @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
-      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @font-face {
+        font-family: 'Droid Serif';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Droid Serif'), local('DroidSerif'), url(droidserif.ttf) format('truetype');
+      }
+      @font-face {
+        font-family: 'Yanone Kaffeesatz';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Yanone Kaffeesatz Regular'), local('YanoneKaffeesatz-Regular'), url(yanonekaffeesatz.ttf) format('truetype');
+      }
     </style>
 
     <style type="text/less">
@@ -14,13 +24,13 @@
       /* mixins */
       .ignore-padding() {
         -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -ms-box-sizing: border-box;
-        -o-box-sizing: border-box;
-        box-sizing: border-box;
+           -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+             -o-box-sizing: border-box;
+                box-sizing: border-box;
       }
 
-      // grid
+
       @padding-grid: 1em;
 
       .column() {
@@ -28,14 +38,9 @@
         float: left;
       }
 
-      .last() {
-        padding-right: 0;
-      }
-
       .full-width()  { .column; width: 100%;   }
       .half-width()  { .column; width: 50%;    }
       .third-width() { .column; width: 33.33%; }
-
 
 
       /* global */
@@ -47,7 +52,9 @@
 
       body {
         font-family: 'Droid Serif';
-        font-size: 100%;
+        font-size: 1.45em;
+        line-height: 1.5;
+        color: @color-dark;
       }
 
       h1, h2, h3 {
@@ -56,32 +63,36 @@
         margin-bottom: 0;
       }
       h1 {
-        font-size: 4em;
-      }
-      h2 {
         font-size: 3em;
       }
-      h3 {
+      h2 {
         font-size: 2em;
       }
-
-      .footnote {
-        position: absolute;
-        bottom: 3em;
+      h3 {
+        font-size: 1em;
+      }
+      ul {
+        margin: 0;
       }
 
-
-      /* remark tweeks */
+      /* remark tweaks */
       .remark-slide-content {
 
         h1:first-child {
           margin-top: 0;
         }
 
+        code {
+          font-size: 0.75em;
+          background-color: @color-dark;
+          color: #f7f7f7;
+          padding: 0.2em 0.4em;
+          border-radius: 0.2em;
+        }
+
         pre code {
-          font-size: 1.5em !important;
-          border-radius: 5px;
-          padding: 1em 1.1em;
+          border-radius: .5em;
+          padding: 1em 1.5em;
 
           .attribute {
             color: #1df;
@@ -100,9 +111,10 @@
             color: #fd1;
           }
           .attr_selector {
-            color: #E22EA6;
+            color: #aaa;
           }
         }
+
       }
 
 
@@ -113,259 +125,189 @@
 
 
       /* components */
-      /*
-      li p { line-height: 1.25em; }
-
-      .red { color: #fa0000; }
-      .large { font-size: 2em; }
-
-      a, a > code {
-        color: rgb(249, 38, 114);
-        text-decoration: none;
-      }
-
-      */
-
-      .pull-left {
-        float: left;
-        width: 47%;
-        clear: left;
-      }
-      .pull-right {
-        float: right;
-        width: 47%;
-      }
-      .pull-right ~ p {
-        clear: both;
-      }
-
-      /*
-      #slideshow .slide .content code {
-        font-size: 0.8em;
-      }
-      #slideshow .slide .content pre code {
-        font-size: 0.9em;
-        padding: 15px;
-      }
-      */
-
       @color-dark: #272822;
 
-      .inverse {
-        background: @color-dark;
-        color: #777872;
-        text-shadow: 0 0 20px #333;
-      }
-      .inverse h1,
-      .inverse h2 {
-        color: #f3f3f3;
-        line-height: 0.8em;
-      }
-
-      /*
-      #slide-inverse .footnote {
-        bottom: 12px;
-        left: 20px;
-      }
-      #slide-how .slides {
-        font-size: 0.9em;
+      .task {
+        .third-width;
         position: absolute;
-        top:  151px;
-        right: 140px;
-      }
-      #slide-how .slides h3 {
-        margin-top: 0.2em;
-      }
-      #slide-how .slides .first,
-      #slide-how .slides .second {
-        padding: 1px 20px;
-        height: 90px;
-        width: 120px;
-        -moz-box-shadow: 0 0 10px #777;
-        -webkit-box-shadow: 0 0 10px #777;
-        box-shadow: 0 0 10px #777;
-      }
-      #slide-how .slides .first {
-        background: #fff;
-        position: absolute;
-        top: 20%;
-        left: 20%;
-        z-index: 1;
-      }
-      #slide-how .slides .second {
-        position: relative;
-        background: #fff;
-        z-index: 0;
-      }
-      */
+        top: 1em;
+        right: 1em;
 
-      /* Two-column layout */
-      .left-column {
-        color: #777;
-        width: 20%;
-        height: 92%;
-        float: left;
-      }
-      .left-column h2:last-of-type,
-      .left-column h3:last-child {
-        color: #000;
-      }
+        background-color: green;
+        padding: 0.4em 1em;
+        border-radius: 1em;
+        color: #f7f7f7;
+        font-family: 'Yanone Kaffeesatz';
+        font-size: 1.2em;
 
-      .right-column {
-        width: 75%;
-        float: right;
-        padding-top: 2em;
-      }
-
-      .largerFont {
-        font-size: 2em;
-      }
-
-      .full-width {
-        float: left;
-        display: block;
-        width: 100%;
       }
 
       .specificity {
-        margin: 0 auto;
-        padding: 1em;
+        .half-width;
+        display: inline-block;
         overflow: auto;
-        width: 16.5em;
+        float: right;
         position: relative;
-        background-color: white;
-        border-radius: 5px;
+        list-style-type: none;
+        margin: 1em;
+
+        &.specificity--large {
+          float: none;
+          width: auto;
+          font-size: 1.5em;
+          li {
+            color: @color-dark;
+          }
+        }
+
+        li {
+          position: relative;
+          padding: 1em;
+          float: left;
+          text-align: center;
+          color: white;
+          font-family: 'Yanone Kaffeesatz';
+
+          &:before {
+            position: absolute;
+            top: -0.3em;
+            left: 0;
+            right: 0;
+
+            text-align: center;
+            color: #aaa;
+          }
+          &:nth-child(1):before {
+            content: 'style';
+          }
+          &:nth-child(2):before {
+            content: 'id';
+          }
+          &:nth-child(3):before {
+            content: 'class';
+          }
+          &:nth-child(4):before {
+            content: 'element';
+          }
+        }
       }
 
-      .specificity li {
-        display: block;
-        float: left;
-        border: 1px solid #aaa;
-        border-width: 1px 0px 1px 1px;
-        margin-top: 0.75em;
-        padding: 0.7em;
+      pre ~ p ~ .specificity {
         position: relative;
-        width: 2.2em;
-        text-align: center;
-
-      }
-      .specificity li:first-child{
-        border-radius: 5px 0 0 5px;
-      }
-      .specificity li:last-child{
-        border-width: 1px;
-        border-radius: 0 5px 5px 0;
-      }
-      .specificity li:before{
-        font-size: 0.9em;
-        color: #aaa;
-        display: block;
-        position: absolute;
-        top: -1.5em;
-        left: 0;
-        font-family: 'Yanone Kaffeesatz';
-      }
-      .specificity li:nth-child(1):before{
-        content: 'style';
-      }
-      .specificity li:nth-child(2):before{
-        content: 'id';
-      }
-      .specificity li:nth-child(3):before{
-        content: 'class';
-      }
-      .specificity li:nth-child(4):before{
-        content: 'element';
+        top: -5.6em;
       }
 
       /* slides */
       .remark-slide {
 
-        .agenda {
-          .half-width;
-          float: none;
-          text-align: left;
-          margin: 0 auto;
+        .inverse {
+          background: @color-dark;
+          color: #777872;
+          text-shadow: 0 0 20px #333;
+        }
+        .inverse h1,
+        .inverse h2 {
+          color: #f3f3f3;
+          line-height: 0.8em;
         }
 
 
-        .boxmodel {
-          padding: 2.5em;
-          float: left;
-        }
-        .boxmodel.margin{
-          background-color: red;
-        }
-        .boxmodel.border{
-          background-color: black;
-        }
-        .boxmodel.padding{
-          background-color: blue;
-        }
-        .boxmodel.text{
-          background-color: yellow;
-          height: 2.5em;
-          width: 2.5em;
-          text-indent: -9999px;
-        }
-
-        .redmark{
-          background-color: red;
-        }
-        .blackmark{
-          background-color: black;
-        }
-        .bluemark{
-          background-color: blue;
-        }
-        .yellowmark{
-          background-color: yellow;
-        }
-        .boxmodel-description {
-          font-size: 2em;
-          margin-left: 5em;
-          padding: 0.2em 1em;
+        .slide-agenda {
+          .agenda {
+            .half-width;
+            float: none;
+            text-align: left;
+            margin: 0 auto;
+          }
         }
 
 
-
-        .priority {
+        .slide-priority {
 
           .priorities {
             .half-width;
+            font-size: 1.8em;
           }
 
           .arrow {
             .half-width;
+            text-align: center;
 
+            @width-arrow: 1em;
             .arrow-down {
               display: block;
-              height: 12em;
-              width: 2em;
+              height: 11em;
+              width: @width-arrow;
               margin: 0 auto;
               background-color: @color-dark;
               position: relative;
 
               &:after {
                 content: '';
-                border-left: 2em solid transparent;
-                border-right: 2em solid transparent;
-                border-top: 2em solid @color-dark;
+                border-left:  @width-arrow solid transparent;
+                border-right: @width-arrow solid transparent;
+                border-top:   @width-arrow solid @color-dark;
                 position: absolute;
-                left: -1em;
-                bottom: -2em;
+                left: -@width-arrow/2;
+                bottom: -@width-arrow;
               }
             }
           }
         }
 
-        .selectors {
-          code {
-            background-color: none;
+        .slide-selectors {
+          .selector pre code {
+            font-size: 1.2em;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: left;
           }
         }
-      }
 
+        .slide-boxmodel {
+
+          .boxmodel {
+            .half-width;
+            .text {
+              text-indent: -9999px;
+            }
+          }
+
+          .box {
+            padding: 2em;
+            display: block;
+            text-align: center;
+          }
+
+          .margin {
+            background-color: red;
+          }
+
+          .border {
+            background-color: black;
+          }
+
+          .padding {
+            background-color: blue;
+          }
+
+          .text {
+            background-color: yellow;
+          }
+
+          .description {
+            padding: 0.2em 1em;
+            color: #f7f7f7;
+            &.text {
+              color: @color-dark;
+            }
+          }
+        }
+
+
+
+
+      }
     </style>
 
   </head>
@@ -380,9 +322,9 @@ template: inverse
 
 ---
 template: inverse
+class: slide-agenda
 
 # Agenda
-
 .agenda[
 ## 1. Introduction to CSS
 ## 2. Layout
@@ -406,6 +348,7 @@ template: inverse
 ---
 
 # HTML & CSS
+.task[ Gjør overskrifter til fargen `#333`! ]
 
 ```html
 <div>
@@ -414,146 +357,139 @@ template: inverse
 ```
 
 ```css
-p {
-  color: red;
-}
+  p {
+    color: red;
+  }
 ```
 
 ---
-class: selectors
+class: center middle slide-selectors
 
-# Selectors
-
+# A CSS selector
+.selector[
 ```css
 element#id.class:pseudo-selector[attribute-selector] {
   property: value;
 }
 ```
+]
 
 ---
-class: priority
+class: slide-priority
 
 # Priority
 .arrow[
-  ### Increasing priority
+
+Increasing priority
+
   .arrow-down[]
 ]
-
 .priorities[
-  ### Browser
-  ### User
-  ### `<link>`
-  ### `<style>`
-  ### inline `style` attribute
+
+* Browser
+* User
+* `<link>`
+* `<style>`
+* Inline `style` attribute
+
 ]
 
 
 ---
+class: middle center slide-specificity
 
 # Specificity
 
-<ul class="specificity largerFont">
-	<li>0
-	<li>0
-	<li>0
-	<li>0
+<ul class="specificity specificity--large">
+  <li>0
+  <li>0
+  <li>0
+  <li>0
 </ul>
-
 
 ---
 
 #Specificity
-.pull-left[
-
-	p {
-		color: red;
-	}
-]
-.pull-right[
+.task[]
+```css
+p {
+  color: green;
+}
+```
 <ul class="specificity">
-	<li>0
-	<li>0
-	<li>0
-	<li>1
+  <li>0
+  <li>0
+  <li>0
+  <li>1
 </ul>
-]
 
-.pull-left[
-
-	\.highlighted {
-		color: yellow;
-	}
-]
-.pull-right[
+```css
+.highlighted {
+  color: yellow;
+}
+```
 <ul class="specificity">
-	<li>0
-	<li>0
-	<li>1
-	<li>0
+  <li>0
+  <li>0
+  <li>1
+  <li>0
 </ul>
-]
 
-.pull-left[
-
-	p.error {
-		color: red;
-	}
-]
-.pull-right[
+```css
+p.error {
+  color: red;
+}
+```
 <ul class="specificity">
-	<li>0
-	<li>0
-	<li>1
-	<li>1
+  <li>0
+  <li>0
+  <li>1
+  <li>1
 </ul>
-]
-
-.pull-left[
-
-	.highlight.important {
-		color: orange;
-	}
-]
-.pull-right[
-<ul class="specificity">
-	<li>0
-	<li>0
-	<li>2
-	<li>0
-</ul>
-]
-
-.pull-left[
-
-	#menu {
-		color: blue;
-	}
-]
-.pull-right[
-<ul class="specificity">
-	<li>0
-	<li>1
-	<li>0
-	<li>0
-</ul>
-]
 
 ---
 
-# Cascading properties
+#Specificity
+.task[]
 
+```css
+.highlight.important {
+  color: orange;
+}
+```
+<ul class="specificity">
+  <li>0
+  <li>0
+  <li>2
+  <li>0
+</ul>
+
+```css
+#menu {
+  color: blue;
+}
+```
+<ul class="specificity">
+  <li>0
+  <li>1
+  <li>0
+  <li>0
+</ul>
+
+---
+# Cascading properties
 Some css selector
 
 ```css
-\.alert-box {
+.alert-box {
   border: 1px solid red;
 }
 ```
 
-and later the same selector again..
+..and later the same selector again..
 
 ```css
-\.alert-box {
+.alert-box {
   padding: 1em;
 }
 ```
@@ -561,17 +497,15 @@ and later the same selector again..
 ---
 
 # Cascading properties
-
-The defined properties cascade!
+.task[Finn ut hvorfor TODO stil får stilen TODO property]
+The properties cascade!
 
 ```css
-\.alert-box {
+.alert-box {
   border: 1px solid red;
   padding: 1em;
 }
 ```
-
-TODO bilde av cascading
 
 ---
 
@@ -579,15 +513,12 @@ TODO bilde av cascading
 
 Some properties have a value `inherit`
 
-E.g.
-
 ```css
 font-size: inherit;
 color: inherit;
 ```
 
-### But
-`backcround-color` is not!
+But `background-color` is not!
 
 ```css
 background-color: transparent;
@@ -605,68 +536,68 @@ template: inverse
 # Layout
 
 ---
+class: middle center
 
-# Display
-
-* `block`
-* `inline`
-* `none`
-* `inline-block`
+# The display property
+`block` `inline` `none` `inline-block`
 
 ---
 
-# Display - `block`
-
-* Some elements has `block` as default
-	* `<div>`, `<p>`, `<form>`
-* Starts at new line
-* Streches out horizontally as far as it can
-* Can modify width
+# Display: block;
+* Some elements default to `display: block`
+  * `<div>`
+  * `<p>`
+  * `<form>`
+* Starts with a new line
+* Fills it's container
+* `width` modifiable
 
 ---
 
-# Display - `inline`
-
-* Some elements has `inline` as default
-	* `<span>`, `<a>`, `<img>`
+# Display: inline;
+* Some elements default to `display: inline`
+  * `<span>`
+  * `<a>`
+  * `<img>`
 * Does not disrupt flow
-* No defined width. Uses the amount of space that the content needs
-* Width is not modifiable
+* Has no `width`!
+  * Uses the amount of space that the content needs
+* `width` not modifiable
 
 ---
 
-# Display - `none`
-
-* Some elements has `none` as default
-	* `<script>`, `<head>`
+# Display: none;
+* Some elements default to `display: none`
+  * `<script>`
+  * `<head>`
 * Used to hide element
 * Rendered as no element existed
 
 ---
 
-# Display - `inline-block`
-
-* No elements has `none` as default
-* Act like `inline` element	but can have a defined width and height as `block`
-* IE8+ (IE7 is partly supported)
+# Display: inline-block;
+* No elements have `display: inline-block` as default!
+* Act like `display: inline`
+  * But can have a defined width and height as `display: block`
+* IE8+
 
 ---
+class: slide-boxmodel
 
 # The box model
+.boxmodel[
+.box.margin[
+.box.border[
+.box.padding[
+.box.text[
+Boxmodel
+]]]]]
 
-.push-left[
-.boxmodel.margin.red-mark[.boxmodel.border.black-mark[.boxmodel.padding.blue-mark[.boxmodel.text.yellow-mark[Boxmodel]]]]
-]
-.push-right[
 
-.boxmodel-description.redmark[`margin`]
-
-.boxmodel-description.blackmark[`border`]
-
-.boxmodel-description.bluemark[`padding`]
-
-.boxmodel-description.yellowmark[`content`]
-]
+.description.margin[Margin]
+.description.border[Border]
+.description.padding[Padding]
+.description.text[Content]
 
 ---
 
