@@ -33,14 +33,14 @@
 
       @padding-grid: 1em;
 
-      .column() {
+      .column {
         padding-right: @padding-grid;
         float: left;
       }
 
-      .full-width()  { .column; width: 100%;   }
-      .half-width()  { .column; width: 50%;    }
-      .third-width() { .column; width: 33.33%; }
+      .full-width  { .column; width: 100%;   }
+      .half-width  { .column; width: 50%;    }
+      .third-width { .column; width: 33.33%; }
 
 
       /* global */
@@ -60,7 +60,7 @@
       h1, h2, h3 {
         font-family: 'Yanone Kaffeesatz';
         font-weight: 400;
-        margin-bottom: 0;
+        margin: 0;
       }
       h1 {
         font-size: 3em;
@@ -69,7 +69,7 @@
         font-size: 2em;
       }
       h3 {
-        font-size: 1em;
+        font-size: 1.3em;
       }
       ul {
         margin: 0;
@@ -77,10 +77,6 @@
 
       /* remark tweaks */
       .remark-slide-content {
-
-        h1:first-child {
-          margin-top: 0;
-        }
 
         code {
           font-size: 0.75em;
@@ -112,6 +108,16 @@
           }
           .attr_selector {
             color: #aaa;
+          }
+
+          position: relative;
+          &:before {
+            content: attr(class);
+            text-transform: uppercase;
+            color: #555;
+            position: absolute;
+            top: 0.5em;
+            right: 1em;
           }
         }
 
@@ -208,7 +214,6 @@
         .inverse h1,
         .inverse h2 {
           color: #f3f3f3;
-          line-height: 0.8em;
         }
 
 
@@ -226,7 +231,7 @@
 
           .priorities {
             .half-width;
-            font-size: 1.8em;
+            font-size: 1.7em;
           }
 
           .arrow {
@@ -257,8 +262,7 @@
 
         .slide-selectors {
           .selector pre code {
-            font-size: 1.2em;
-            display: table-cell;
+            font-size: 1.1em;
             vertical-align: middle;
             text-align: left;
           }
@@ -380,17 +384,17 @@ class: slide-priority
 # Priority
 .arrow[
 
-Increasing priority
+### Increasing priority
 
   .arrow-down[]
 ]
 .priorities[
 
-* Browser
-* User
-* `<link>`
-* `<style>`
-* Inline `style` attribute
+### Browser
+### User
+### `<link>`
+### `<style>`
+### Inline `style` attribute
 
 ]
 
@@ -512,20 +516,17 @@ The properties cascade!
 # Inherited properties
 
 Some properties have a value `inherit`
-
 ```css
 font-size: inherit;
 color: inherit;
 ```
 
 But `background-color` is not!
-
 ```css
 background-color: transparent;
 ```
 
 You can force it, however
-
 ```css
 background-color: inherit;
 ```
@@ -600,20 +601,313 @@ Boxmodel
 .description.text[Content]
 
 ---
-
 template: inverse
 
 # Structure
 
 ---
-template: inverse
+class: middle center
+.half-width[
+# OOCSS
+### Separate structure from skin
+### Separate container from content
+]
+.half-width[
+# SMACSS
+### Categorization
+### Naming
+### Decoupling
+]
 
-# Tips & tricks
+---
+name: wrong
+
+# What's wrong with?
+
+---
+template: wrong
+
+```css
+p.green {
+  background-color: green;
+}
+```
+
+```html
+<p class="green">
+  Changes saved!
+</p>
+```
+
+---
+
+# Naming
+
+## Name after what it is!
+```css
+p.success {
+  background-color: green;
+}
+```
+
+## Not how it's styled
+```css
+p.green {
+  background-color: green;
+}
+```
+
+---
+template: wrong
+
+```css
+p.success {
+  background-color: green;
+}
+```
+
+```html
+<p class="success">
+  Changes saved!
+</p>
+```
+
+---
+
+# Coupled HTML and CSS!
+
+## Use, so it's less specific
+```css
+.success {
+  background-color: green;
+}
+```
+
+## Not
+```css
+p.success {
+  background-color: green;
+}
+```
+
+
+---
+
+# An example
+
+```html
+<ul class="navigation">
+  <li><a>Fishing</a>
+  <li><a>Hunting</a>
+</ul>
+```
+
+```css
+.navigation { }
+.navigation li { }
+.navigation li a { }
+```
+
+---
+class: middle center
+
+# "How about we show subcategories when our users hover Fishing!?"
+
+---
+
+# Ehh
+
+```html
+<ul class="navigation">
+  <li><a>Fishing</a>
+    <ul>
+      <li><a>Salmon</a>
+      <li><a>Trout</a>
+    </ul>
+  <li><a>Hunting</a>
+</ul>
+```
+
+```css
+.navigation { }
+.navigation li { }
+.navigation li a { }
+.navigation li li { }
+.navigation li li a { }
+```
+
+---
+
+# Child-selectors!
+## Only affect direct children
+
+```html
+<ul class="navigation">
+  <li><a>Fishing</a>
+    <ul>
+      <li><a>Salmon</a>
+      <li><a>Trout</a>
+    </ul>
+  <li><a>Hunting</a>
+</ul>
+```
+
+```css
+.navigation { }
+.navigation > li { }
+.navigation > li > a { }
+```
+
+---
+
+# Reusable CSS
+
+```html
+<section class="module">
+  <h1></h1>
+  <ul>
+    <li>
+      <a></a>
+    <li>
+      <a></a>
+  </ul>
+</section>
+```
+
+```css
+.module { }
+.module h1 { }
+.module ul { }
+```
+
+---
+
+# But what if
+
+```html
+<section class="module">
+  <h1></h1>
+  <div>
+    <img>
+  </div>
+</section>
+```
+```css
+.module { }
+.module h1 { }
+.module ul { }
+.module div { }
+```
+
+---
+
+# And
+```html
+<section class="module">
+  <h2></h2>
+  <p></p>
+</section>
+```
+```css
+.module { }
+.module h1 { }
+.module ul { }
+.module div { }
+.module h2 { }
+.module p { }
+```
+
+---
+
+# Not. Good.
+
+```css
+.module { }
+
+.module h1 { }
+.module h2 { }
+
+.module ul,
+.module p,
+.module div { }
+```
+
+---
+
+# Reusable parts
+
+## Abstracts away types
+
+```css
+.module { }
+.module--heading { }
+.module--content { }
+```
+
+---
+
+# Reusable!
+
+```html
+<section class="module">
+  <h1 class="module--heading"></h1>
+  <ul class="module--content"></ul>
+</section>
+```
+```html
+<section class="module">
+  <h2 class="module--heading"></h2>
+  <p class="module--content"></p>
+</section>
+```
+```html
+<section class="module">
+  <h1 class="module--heading"></h1>
+  <div class="module--content">
+    <img>
+  </div>
+</section>
+```
+---
+
+# Extend
+
+## Specific component
+```css
+.button {}
+```
+
+## Variations extend it
+```css
+.button--small {}
+.button--large {} /* Why not just .large? Other stuff is large too! */
+```
+
+```html
+<div>
+  <button class="button button--large">
+</div>
+```
+
 
 ---
 template: inverse
 
-# The new hotness
+# Tips & Tricks
+
+---
+class: middle center
+
+# LESS.js
+## Variables
+## Mixins
+## Nesting
+## +++
+
+---
+template: inverse
+
+# CSS3
 
 ---
     </textarea>
