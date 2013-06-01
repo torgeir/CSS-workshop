@@ -82,6 +82,26 @@
           font-size: 1.5em !important;
           border-radius: 5px;
           padding: 1em 1.1em;
+
+          .attribute {
+            color: #1df;
+          }
+          .value {
+            color: #E22EA6;
+          }
+
+          .id {
+            color: #1df;
+          }
+          .class {
+            color: #A6E22E;
+          }
+          .pseudo {
+            color: #fd1;
+          }
+          .attr_selector {
+            color: #E22EA6;
+          }
         }
       }
 
@@ -338,6 +358,12 @@
             }
           }
         }
+
+        .selectors {
+          code {
+            background-color: none;
+          }
+        }
       }
 
     </style>
@@ -394,12 +420,13 @@ p {
 ```
 
 ---
+class: selectors
 
 # Selectors
 
 ```css
-p#anId.aClass:pseudo[attribute] {
-	/* Properties */
+element#id.class:pseudo-selector[attribute-selector] {
+  property: value;
 }
 ```
 
