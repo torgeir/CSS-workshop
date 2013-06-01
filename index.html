@@ -3,40 +3,113 @@
    <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Remark</title>
-    <style>
+
+    <style type="text/css">
       @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
       @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+    </style>
 
-      body { font-family: 'Droid Serif'; }
+    <style type="text/less">
+
+      /* mixins */
+      .ignore-padding() {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      // grid
+      @padding-grid: 1em;
+
+      .column() {
+        padding-right: @padding-grid;
+        float: left;
+      }
+
+      .last() {
+        padding-right: 0;
+      }
+
+      .full-width()  { .column; width: 100%;   }
+      .half-width()  { .column; width: 50%;    }
+      .third-width() { .column; width: 33.33%; }
+
+
+
+      /* global */
+      *,
+      *:after,
+      *:before {
+        .ignore-padding;
+      }
+
+      body {
+        font-family: 'Droid Serif';
+        font-size: 100%;
+      }
+
       h1, h2, h3 {
         font-family: 'Yanone Kaffeesatz';
         font-weight: 400;
         margin-bottom: 0;
       }
-      h1 { font-size: 4em; }
-      h2 { font-size: 2em; }
-      h3 { font-size: 1.6em; }
+      h1 {
+        font-size: 4em;
+      }
+      h2 {
+        font-size: 3em;
+      }
+      h3 {
+        font-size: 2em;
+      }
+
       .footnote {
         position: absolute;
         bottom: 3em;
       }
+
+
+      /* remark tweeks */
+      .remark-slide-content {
+
+        h1:first-child {
+          margin-top: 0;
+        }
+
+        pre code {
+          font-size: 1.5em !important;
+          border-radius: 5px;
+          padding: 1em 1.1em;
+        }
+      }
+
+
+      /* layout */
+
+
+
+
+
+      /* components */
+      /*
       li p { line-height: 1.25em; }
+
       .red { color: #fa0000; }
       .large { font-size: 2em; }
+
       a, a > code {
         color: rgb(249, 38, 114);
         text-decoration: none;
       }
-      code {
-        -moz-border-radius: 5px;
-        -web-border-radius: 5px;
-        background: #e7e8e2;
-        border-radius: 5px;
-      }
+
+      */
+
       .pull-left {
         float: left;
         width: 47%;
-		clear: left;
+        clear: left;
       }
       .pull-right {
         float: right;
@@ -45,6 +118,8 @@
       .pull-right ~ p {
         clear: both;
       }
+
+      /*
       #slideshow .slide .content code {
         font-size: 0.8em;
       }
@@ -52,17 +127,22 @@
         font-size: 0.9em;
         padding: 15px;
       }
+      */
+
+      @color-dark: #272822;
+
       .inverse {
-        background: #272822;
+        background: @color-dark;
         color: #777872;
         text-shadow: 0 0 20px #333;
       }
-      .inverse h1, .inverse h2 {
+      .inverse h1,
+      .inverse h2 {
         color: #f3f3f3;
         line-height: 0.8em;
       }
 
-      /* Slide-specific styling */
+      /*
       #slide-inverse .footnote {
         bottom: 12px;
         left: 20px;
@@ -76,7 +156,8 @@
       #slide-how .slides h3 {
         margin-top: 0.2em;
       }
-      #slide-how .slides .first, #slide-how .slides .second {
+      #slide-how .slides .first,
+      #slide-how .slides .second {
         padding: 1px 20px;
         height: 90px;
         width: 120px;
@@ -96,6 +177,7 @@
         background: #fff;
         z-index: 0;
       }
+      */
 
       /* Two-column layout */
       .left-column {
@@ -104,142 +186,162 @@
         height: 92%;
         float: left;
       }
-      .left-column h2:last-of-type, .left-column h3:last-child {
+      .left-column h2:last-of-type,
+      .left-column h3:last-child {
         color: #000;
       }
+
       .right-column {
         width: 75%;
         float: right;
         padding-top: 2em;
       }
-	  
-	  .largerFont {
-		font-size: 2em;
-	  }
-	  
-	  .full-width {
-		float: left;
-		display: block;
-		width: 100%;
-	  }
-	  
-	  .specificity {
-		margin: 0 auto;
-		padding: 1em;
-		overflow: auto;
-		width: 16.5em;
-		position: relative;
-		background-color: white;
-		border-radius: 5px;
-	  }
-	  
-	  .specificity li{
-		display: block;
-		float: left;
-		border: 1px solid #aaa;
-		border-width: 1px 0px 1px 1px;
-		margin-top: 0.75em;
-		padding: 0.7em;
-		position: relative;
-		width: 2.2em;
-		text-align: center;
-		
-	  }
-	  .specificity li:first-child{
-		border-radius: 5px 0 0 5px;
-	  }
-	  .specificity li:last-child{
-		border-width: 1px;
-		border-radius: 0 5px 5px 0;
-	  }
-	  .specificity li:before{
-		font-size: 0.9em;
-		color: #aaa;
-		display: block;
-		position: absolute;
-		top: -1.5em;
-		left: 0;
-		font-family: 'Yanone Kaffeesatz';
-	  }
-	  .specificity li:nth-child(1):before{
-		content: 'style';
-	  }
-	  .specificity li:nth-child(2):before{
-		content: 'id';
-	  }
-	  .specificity li:nth-child(3):before{
-		content: 'class';
-	  }
-	  .specificity li:nth-child(4):before{
-		content: 'element';
-	  }
-	  
-	  .arrowDown {
-		height: 12em;
-		width: 4em;
-		margin: 0 2em;
-		background-color: black;
-		position: absolute;
-		top: 8em;
-		left: 20em;
-	  }
-	  .arrowDown:after{
-	    content: '';
-	  	width: 0; 
-		height: 0; 
-		border-left: 4em solid transparent;
-		border-right: 4em solid transparent;		
-		border-top: 4em solid black;
-		margin: 0 -2em;
-		position: absolute;
-		bottom: -3.9em;
-	  }
-	  .arrowDown .arrowDescription {
-	    font-size: 2em;
-		position: absolute;
-		left: 3em;
-		margin: 2em 0;
-	  }
-	  
-	  .boxmodel {
-		padding: 2.5em;
-		float: left;
-	  }
-	  .boxmodel.margin{
-		background-color: red;
-	  }
-	  .boxmodel.border{
-		background-color: black;
-	  }
-	  .boxmodel.padding{
-		background-color: blue;
-	  }
-	  .boxmodel.text{
-		background-color: yellow;
-		height: 2.5em;
-		width: 2.5em;
-		text-indent: -9999px;
-	  }
-	  
-	.redmark{
-		background-color: red;
-	}
-	.blackmark{
-		background-color: black;
-	}
-	.bluemark{
-		background-color: blue;
-	}
-	.yellowmark{
-		background-color: yellow;
-	}
-	.boxmodel-description {
-		font-size: 2em;
-		margin-left: 5em;
-		padding: 0.2em 1em;
-	}
-	  
+
+      .largerFont {
+        font-size: 2em;
+      }
+
+      .full-width {
+        float: left;
+        display: block;
+        width: 100%;
+      }
+
+      .specificity {
+        margin: 0 auto;
+        padding: 1em;
+        overflow: auto;
+        width: 16.5em;
+        position: relative;
+        background-color: white;
+        border-radius: 5px;
+      }
+
+      .specificity li {
+        display: block;
+        float: left;
+        border: 1px solid #aaa;
+        border-width: 1px 0px 1px 1px;
+        margin-top: 0.75em;
+        padding: 0.7em;
+        position: relative;
+        width: 2.2em;
+        text-align: center;
+
+      }
+      .specificity li:first-child{
+        border-radius: 5px 0 0 5px;
+      }
+      .specificity li:last-child{
+        border-width: 1px;
+        border-radius: 0 5px 5px 0;
+      }
+      .specificity li:before{
+        font-size: 0.9em;
+        color: #aaa;
+        display: block;
+        position: absolute;
+        top: -1.5em;
+        left: 0;
+        font-family: 'Yanone Kaffeesatz';
+      }
+      .specificity li:nth-child(1):before{
+        content: 'style';
+      }
+      .specificity li:nth-child(2):before{
+        content: 'id';
+      }
+      .specificity li:nth-child(3):before{
+        content: 'class';
+      }
+      .specificity li:nth-child(4):before{
+        content: 'element';
+      }
+
+      /* slides */
+      .remark-slide {
+
+        .agenda {
+          .half-width;
+          float: none;
+          text-align: left;
+          margin: 0 auto;
+        }
+
+
+        .boxmodel {
+          padding: 2.5em;
+          float: left;
+        }
+        .boxmodel.margin{
+          background-color: red;
+        }
+        .boxmodel.border{
+          background-color: black;
+        }
+        .boxmodel.padding{
+          background-color: blue;
+        }
+        .boxmodel.text{
+          background-color: yellow;
+          height: 2.5em;
+          width: 2.5em;
+          text-indent: -9999px;
+        }
+
+        .redmark{
+          background-color: red;
+        }
+        .blackmark{
+          background-color: black;
+        }
+        .bluemark{
+          background-color: blue;
+        }
+        .yellowmark{
+          background-color: yellow;
+        }
+        .boxmodel-description {
+          font-size: 2em;
+          margin-left: 5em;
+          padding: 0.2em 1em;
+        }
+
+
+
+        .priority {
+
+          .priorities {
+            .half-width;
+          }
+
+          .arrow {
+            .half-width;
+
+            .arrow-down {
+              display: block;
+              height: 12em;
+              width: 2em;
+              margin: 0 auto;
+              background-color: @color-dark;
+              position: relative;
+
+              &:after {
+                content: '';
+                border-left: 2em solid transparent;
+                border-right: 2em solid transparent;
+                border-top: 2em solid @color-dark;
+                position: absolute;
+                left: -1em;
+                bottom: -2em;
+              }
+            }
+          }
+        }
+      }
+
     </style>
+
   </head>
   <body>
     <textarea id="source">
@@ -251,14 +353,17 @@ template: inverse
 # CSS-workshop
 
 ---
+template: inverse
 
 # Agenda
 
+.agenda[
 ## 1. Introduction to CSS
 ## 2. Layout
 ## 3. Structure
 ## 4. Tips & Tricks
 ## 5. The new hotness
+]
 
 ---
 template: inverse
@@ -269,21 +374,22 @@ template: inverse
 
 # HTML
 
-* Everything is a box
+## Everything is a box
+## Todo bilde?
 
 ---
 
-#
+# HTML & CSS
 
 ```html
 <div>
-	<p> This is a paragraph </p>
+  <p> This is a paragraph. </p>
 </div>
 ```
 
 ```css
 p {
-	color: red;
+  color: red;
 }
 ```
 
@@ -298,18 +404,22 @@ p#anId.aClass:pseudo[attribute] {
 ```
 
 ---
+class: priority
 
 # Priority
+.arrow[
+  ### Increasing priority
+  .arrow-down[]
+]
 
-## Browser 
-## User 
-## `<link>`
-## `<style>`
-## inline `style` attribute
+.priorities[
+  ### Browser
+  ### User
+  ### `<link>`
+  ### `<style>`
+  ### inline `style` attribute
+]
 
-<div class="arrowDown">
-	<span class="arrowDescription">Increasing priority</span>
-</div>
 
 ---
 
@@ -327,7 +437,7 @@ p#anId.aClass:pseudo[attribute] {
 
 #Specificity
 .pull-left[
-	
+
 	p {
 		color: red;
 	}
@@ -502,7 +612,7 @@ template: inverse
 
 * Some elements has `none` as default
 	* `<script>`, `<head>`
-* Used to hide element	
+* Used to hide element
 * Rendered as no element existed
 
 ---
@@ -549,6 +659,7 @@ template: inverse
 
 ---
     </textarea>
+    <script src="less-1.4.0-beta.js"></script>
     <script src="remark-0.5.1-beta.js"></script>
     <script>
       var slideshow = remark.create({
