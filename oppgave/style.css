@@ -1,27 +1,31 @@
-article, aside, section {
-	display: block;
-}
+
+/* Layout */
 
 .container {
-	width: 100%;
-	max-width: 70em;
-	margin: 7em auto 0 auto;
+  width: 100%;
+  max-width: 70em;
+  margin: 0 auto;
+}
+
+.header {
+  overflow: auto;
+}
+
+.header--logo {
+  padding-left: 400px;
+  background: url(logo.png) center left no-repeat;
 }
 
 .navigasjon {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	background-color: #eee;
+  background-color: #eee;
+}
+
+.innhold {
+  overflow: hidden;
 }
 
 .footer {
-	overflow: hidden;
-}
-.om-oss, .tips-oss{
-	width: 50%;
-	float: left;
+  overflow: hidden;
 }
 
 
@@ -30,40 +34,49 @@ article, aside, section {
 
 
 
+
+/* Komponenter */
 
 .meny {
-	border: 1px solid #ccc;
-	overflow: hidden;
-}
-.meny .menypunkt {
-	display: block;
-	float: left;
-}
-.meny .menyelement {
-	display: block;
-	padding: 1em;
+  border: 1px solid #ccc;
+  overflow: hidden;
 }
 
+.meny--punkt {
+  float: left;
+}
 
+.meny--element {
+  display: block;
+  padding: 1em;
+}
 
+.meny li {
+  text-transform: uppercase;
+}
 
-
-
-
-
-
-
-
-
-
+.meny li li {
+  text-transform: none;
+}
 
 
 .nyhet {
-	overflow: auto;
+  float: left;
+  width: 45%;
+  padding: 2.5%;
 }
-.nyhet .bilde{
-	float: right;
+
+.nyhet:nth-child(2n+1) {
+  clear: left;
 }
-.nyhet:nth-child(even) .bilde {
-	float: left;
+
+.nyhet--bilde {
+  max-width: 100%;
+}
+
+
+
+.om-oss, .tips-oss{
+  width: 50%;
+  float: left;
 }

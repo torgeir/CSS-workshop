@@ -1,91 +1,180 @@
 <html>
   <head>
     <title>Min side</title>
-    <link rel="stylesheet" href="style.css"/>
+    <!--<link rel="stylesheet" href="style.css"/>-->
+
+    <style>
+
+      /* Global */
+
+      article, aside, section {
+        display: block;
+      }
+
+      body {
+        margin: 5%;
+      }
+
+
+      /* Layout */
+
+      .container {
+
+      }
+
+      .header {
+
+      }
+
+      .navigasjon {
+
+      }
+
+      .innhold {
+
+      }
+
+      .footer {
+
+      }
+
+
+      /* Komponenter */
+
+      .meny {
+
+      }
+
+      .meny li ul {
+        display: none;
+      }
+
+      .meny li:hover ul {
+        display: block;
+      }
+
+
+      .nyhet {
+
+      }
+
+      .nyhet:nth-child(2n+1) {
+
+      }
+
+      .nyhet--ingress {
+        margin-top: 40px;
+      }
+
+
+      .om-oss {
+
+      }
+
+      .tips-oss {
+
+      }
+
+    </style>
   </head>
   <body>
 
     <div class="container">
 
-      <header class="header">
-        <img src="logo.png" class="logo">
-        <h1 class="overskrift">Tittel</h1>
+      <header>
+        <h1>Norges eldste avis</h1>
       </header>
+
 
       <nav class="navigasjon">
         <ul class="meny">
-          <li class="menypunkt">
-            <a class="menyelement" href="#">Nyheter</a>
+          <li>
+            <a href="#">Nyheter</a>
+            <ul>
+              <li>
+                <a href="#">Innenriks</a>
+              </li>
+              <li>
+                <a href="#">Utenriks</a>
+              </li>
+            </ul>
           </li>
-          <li class="menypunkt">
-            <a class="menyelement" href="#">Sport</a>
+          <li>
+            <a href="#">Sport</a>
           </li>
-          <li class="menypunkt">
-            <a class="menyelement" href="#">Kultur</a>
+          <li>
+            <a href="#">Kultur</a>
           </li>
-          <li class="menypunkt">
-            <a class="menyelement" href="#">Økonomi</a>
+          <li>
+            <a href="#">Økonomi</a>
           </li>
-          <li class="menypunkt">
-            <a class="menyelement" href="#">Meninger</a>
+          <li>
+            <a href="#">Meninger</a>
           </li>
-          <li class="menypunkt">
-            <a class="menyelement" href="#">TV</a>
+          <li>
+            <a href="#">TV</a>
           </li>
-          <li class="menypunkt">
-            <a class="menyelement" href="#">Nyttig</a>
+          <li>
+            <a href="#">Nyttig</a>
           </li>
-          <li class="menypunkt">
-            <a class="menyelement" href="#">A te Å</a>
+          <li>
+            <a href="#">A te Å</a>
+          </li>
+          <li>
+            <input name="sok">
           </li>
         </ul>
       </nav>
 
       <section class="innhold">
 
-        <article class="nyhet"> <!-- Div først. Endre til article. Hvor mange måtte endre i css? -->
+        <div class="nyhet">
           <header>
-            <h1 class="overskrift"><a href="">Disse skal redde liv på sjøen</a></h1>
-            <time class="publiseringsdato" datetime="2013-05-27" pubdate>27. mai 2013</time><!-- Span først. Endre til time. Hvor mange måtte endre i css? -->
+            <h1><a href="">Gift i plast kan gi barn høyt blodtrykk</a></h1>
+
+            <span datetime="2013-05-26" pubdate>26. mai 2013</span>
           </header>
 
-          <a href=""><img class="bilde" src="http://www.adressa.no/nyheter/innenriks/article7636545.ece/ALTERNATES/w680-free/vestjenter+montasje.jpg" alt="Søte redningsvestmodeller" /></a>
+          <a href="">
+            <img src="http://www.adressa.no/familie-og-oppvekst/article7623837.ece/ALTERNATES/w280-square/riks000532376-esEbi5Wbs0.jpg" alt="En tallerken" />
+          </a>
 
-          <p class="ingress">
-          For mange legger igjen vesten på land, sier fotballspiller Tina Wulf.
-          </p>
+          <p class="nyhet--ingress"> To biler kolliderte på Omkjøringsveien i Trondheim.  </p>
+        </div>
 
-          <a class="lesmer" href="">Les mer</a>
-        </article>
-
-        <article class="nyhet"> <!-- Div først. Endre til article. Hvor mange måtte endre i css? -->
+        <div class="nyhet">
           <header>
-            <h1 class="overskrift"><a href="">Kjørte inn i annen bil i ettermiddagsrushet</a></h1>
-            <time class="publiseringsdato" datetime="2013-05-26" pubdate>26. mai 2013</time><!-- Span først. Endre til time. Hvor mange måtte endre i css? -->
+            <h1>
+              <a href="">Disse skal redde liv på sjøen</a>
+            </h1>
+            <span datetime="2013-05-27" pubdate>27. mai 2013</span>
           </header>
 
-          <a href=""><img class="bilde" src="http://www.adressa.no/incoming/article7638643.ece/ALTERNATES/w580-free/Krasjen.JPG" alt="Bil som har kollidert" /></a>
+          <a href="">
+            <img src="http://www.adressa.no/nyheter/innenriks/article7636545.ece/ALTERNATES/w680-free/vestjenter+montasje.jpg" alt="Søte redningsvestmodeller" />
+          </a>
 
-          <p class="ingress">
-            To biler kolliderte på Omkjøringsveien i Trondheim.
-          </p>
+          <p class="nyhet--ingress"> For mange legger igjen vesten på land, sier fotballspiller Tina Wulf.  </p>
+        </div>
 
-          <a class="lesmer" href="">Les mer</a>
-        </article>
+
+
+        <div class="nyhet">
+          <header>
+            <h1>
+              <a href="">Kjørte inn i annen bil i ettermiddagsrushet</a>
+            </h1>
+            <span datetime="2013-05-26" pubdate>26. mai 2013</span>
+          </header>
+
+          <a href="">
+            <img src="http://www.adressa.no/incoming/article7638643.ece/ALTERNATES/w580-free/Krasjen.JPG" alt="Bil som har kollidert" /></a>
+
+          <p class="nyhet--ingress"> To biler kolliderte på Omkjøringsveien i Trondheim.  </p>
+        </div>
 
       </section>
 
-
-      <aside class="altInnhold">
-
-        <article class="notis">
-          <a href=""><img class="bilde" src="http://www.adressa.no/familie-og-oppvekst/article7623837.ece/ALTERNATES/w280-square/riks000532376-esEbi5Wbs0.jpg" alt="En tallerken" /></a>
-          <header>
-            <h1 class="overskrift"><a href="">Gift i plast kan gi barn høyt blodtrykk</a></h1>
-          </header>
-        </article>
-
-      </aside>
 
       <footer class="footer">
 
