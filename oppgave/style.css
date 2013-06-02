@@ -1,0 +1,69 @@
+article, aside, section {
+	display: block;
+}
+
+.container {
+	width: 100%;
+	max-width: 70em;
+	margin: 7em auto 0 auto;
+}
+
+.navigasjon {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: #eee;
+}
+
+.footer {
+	overflow: hidden;
+}
+.om-oss, .tips-oss{
+	width: 50%;
+	float: left;
+}
+
+
+
+
+
+
+
+
+.meny {
+	border: 1px solid #ccc;
+	overflow: hidden;
+}
+.meny .menypunkt {
+	display: block;
+	float: left;
+}
+.meny .menyelement {
+	display: block;
+	padding: 1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nyhet {
+	overflow: auto;
+}
+.nyhet .bilde{
+	float: right;
+}
+.nyhet:nth-child(even) .bilde {
+	float: left;
+}
