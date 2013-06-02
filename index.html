@@ -886,7 +886,7 @@ p {
 ---
 
 # Float
-.task[Style `nav` slik at alle menyelementer kommer på en rekke]
+.task[Style `.meny` slik at alle menyelementer kommer på en rekke]
 
 ---
 
@@ -1065,8 +1065,8 @@ p.success {
 
 ```css
 .module { }
-.module--heading { }
-.module--content { }
+.module-heading { }
+.module-content { }
 ```
 
 ---
@@ -1076,20 +1076,20 @@ p.success {
 
 ```html
 <section class="module">
-  <h1 class="module--heading"></h1>
-  <ul class="module--content"></ul>
+  <h1 class="module-heading"></h1>
+  <ul class="module-content"></ul>
 </section>
 ```
 ```html
 <section class="module">
-  <h2 class="module--heading"></h2>
-  <p class="module--content"></p>
+  <h2 class="module-heading"></h2>
+  <p class="module-content"></p>
 </section>
 ```
 ```html
 <section class="module">
-  <h1 class="module--heading"></h1>
-  <div class="module--content">
+  <h1 class="module-heading"></h1>
+  <div class="module-content">
     <img>
   </div>
 </section>
@@ -1104,9 +1104,7 @@ p.success {
 .task.task--inline[
 ### 1 - Endre `div.nyhet` til `article.nyhet`
 
-### 2 - Endre publiseringsdato fra `span` til `time`
-
-### 3 - Det skal være to paragrafer ingress, men bare den første skal ha toppmarg!
+### 2 - Det skal være to paragrafer ingress, men bare den første skal ha toppmarg!
 ]
 
 
@@ -1120,7 +1118,7 @@ name: menus
 
 # Oppgave
 .task.task--inline[
-### "Toppnivåmenyen må være uppercase!"
+### "Andre-nivå elementer i menyen skal listes vertikalt"
 ]
 
 ```html
@@ -1134,19 +1132,17 @@ name: menus
 </ul>
 ```
 
-### Hint: `text-transform`
-
 ---
 
 # Løsning?
 
 ```css
 .meny li {
-  text-transform: uppercase;
+  float: left;
 }
 
 .meny li li {
-  text-transform: none;
+  float: none;
 }
 ```
 
@@ -1157,7 +1153,7 @@ name: menus
 
 ```css
 .meny > li {
-  text-decoration: uppercase;
+  float: left;
 }
 ```
 
