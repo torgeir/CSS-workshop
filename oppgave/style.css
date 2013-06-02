@@ -2,8 +2,7 @@
 /* Layout */
 
 .container {
-  width: 100%;
-  max-width: 70em;
+  max-width: 900px;
   margin: 0 auto;
 }
 
