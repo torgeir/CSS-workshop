@@ -484,6 +484,7 @@ class: middle center
 # Everything is a box!
 
 ---
+name: boxmodel
 class: slide-boxmodel
 
 # Box model
@@ -808,12 +809,41 @@ template: displaynone
 ### No elements have this value as default
 
 ---
+template: boxmodel
+name: boxmodel2
+
+## Property `width` sets the width of the .text[Content], not the entire box!
+
+---
+template: boxmodel2
+name: boxmodel3
+
+.half-width[
+```css
+.box {
+  width: 50px;
+  padding: 10px;
+  border: 1px solid black;
+}
+```
+]
+
+.center[
+`width = 50px + 10px + 10px + 1px + 1px = 72px`
+]
+
+---
 
 # Float
 
 ---
 
-# Position
+# Positioning
+
+### static
+### static
+### static
+### static
 
 ---
 template: inverse
@@ -1118,6 +1148,11 @@ class: middle center
 ## Mixins
 ## Nesting
 ## +++
+
+---
+class: middle center
+
+# box-sizing: border-box;
 
 ---
 template: inverse
