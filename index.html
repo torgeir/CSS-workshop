@@ -30,17 +30,31 @@
                 box-sizing: border-box;
       }
 
+      .border-radius(@border: 0.5em) {
+        -webkit-border-top-right-radius: @border;
+        -webkit-border-bottom-right-radius: @border;
+        -webkit-border-bottom-left-radius: @border;
+        -webkit-border-top-left-radius: @border;
+        -moz-border-radius-topright: @border;
+        -moz-border-radius-bottomright: @border;
+        -moz-border-radius-bottomleft: @border;
+        -moz-border-radius-topleft: @border;
+        border-top-right-radius: @border;
+        border-bottom-right-radius: @border;
+        border-bottom-left-radius: @border;
+        border-top-left-radius: @border;
+      }
 
-      @padding-grid: 1em;
 
       .column {
-        padding-right: @padding-grid;
+        padding-right: 1em;
         float: left;
       }
 
-      .full-width  { .column; width: 100%;   }
-      .half-width  { .column; width: 50%;    }
-      .third-width { .column; width: 33.33%; }
+      .full-width      { .column; width: 100%;   }
+      .two-thirds-wide { .column; width: 66.66%; }
+      .half-width      { .column; width: 50%;    }
+      .third-width     { .column; width: 33.33%; }
 
 
       /* global */
@@ -75,26 +89,40 @@
         margin: 0;
       }
 
+
       /* remark tweaks */
+      @color-pink: #F92672;
+      @color-blue: #1df;
+      @color-yellow: #fd1;
+
+
+      .position {
+        display: none;
+      }
+
       .remark-slide-content {
 
         code {
+          .border-radius(0.2em);
           font-size: 0.75em;
           background-color: @color-dark;
           color: #f7f7f7;
           padding: 0.2em 0.4em;
-          border-radius: 0.2em;
         }
 
         pre code {
-          border-radius: .5em;
+          .border-radius;
           padding: 1em 1.5em;
 
+          .tag {
+            color: @color-pink;
+          }
+
           .attribute {
-            color: #1df;
+            color: @color-blue;
           }
           .value {
-            color: #E22EA6;
+            color: @color-pink;
           }
 
           .id {
@@ -104,7 +132,7 @@
             color: #A6E22E;
           }
           .pseudo {
-            color: #fd1;
+            color: @color-yellow;
           }
           .attr_selector {
             color: #aaa;
@@ -120,7 +148,6 @@
             right: 1em;
           }
         }
-
       }
 
 
@@ -134,6 +161,7 @@
       @color-dark: #272822;
 
       .task {
+        .border-radius;
         .third-width;
         position: absolute;
         top: 1em;
@@ -141,7 +169,6 @@
 
         background-color: green;
         padding: 0.4em 1em;
-        border-radius: 1em;
         color: #f7f7f7;
         font-family: 'Yanone Kaffeesatz';
         font-size: 1.2em;
@@ -156,6 +183,33 @@
         position: relative;
         list-style-type: none;
         margin: 1em;
+
+        &.specificity--important {
+          li {
+            &:before {
+              font-size: 0.9em;
+            }
+            &:nth-child(1) {
+              color: red;
+            }
+            &:nth-child(1):before {
+              content: 'important';
+              color: red;
+            }
+            &:nth-child(2):before {
+              content: 'style';
+            }
+            &:nth-child(3):before {
+              content: 'id';
+            }
+            &:nth-child(4):before {
+              content: 'class';
+            }
+            &:nth-child(5):before {
+              content: 'element';
+            }
+          }
+        }
 
         &.specificity--large {
           float: none;
@@ -230,15 +284,34 @@
         .slide-priority {
 
           .priorities {
-            .half-width;
+            .two-thirds-wide;
             font-size: 1.7em;
+
+            p {
+              display: none;
+             }
+          }
+
+          .in-page,
+          .predefined {
+            padding-left: 1em;
+          }
+
+
+          @width-border: 0.2em;
+          .predefined {
+            border-left: @width-border solid @color-pink;
+          }
+
+          .in-page {
+            border-left: @width-border  solid @color-blue;
           }
 
           .arrow {
-            .half-width;
+            .third-width;
             text-align: center;
 
-            @width-arrow: 1em;
+            @width-arrow: 0.33em;
             .arrow-down {
               display: block;
               height: 11em;
@@ -249,11 +322,11 @@
 
               &:after {
                 content: '';
-                border-left:  @width-arrow solid transparent;
-                border-right: @width-arrow solid transparent;
-                border-top:   @width-arrow solid @color-dark;
+                border-left:  @width-arrow*2 solid transparent;
+                border-right: @width-arrow*2 solid transparent;
+                border-top:   @width-arrow*2 solid @color-dark;
                 position: absolute;
-                left: -@width-arrow/2;
+                left: -@width-arrow*1.445;
                 bottom: -@width-arrow;
               }
             }
@@ -262,7 +335,7 @@
 
         .slide-selectors {
           .selector pre code {
-            font-size: 1.1em;
+            font-size: 0.9em;
             vertical-align: middle;
             text-align: left;
           }
@@ -278,28 +351,30 @@
           }
 
           .box {
+            .border-radius;
             padding: 2em;
             display: block;
             text-align: center;
           }
 
           .margin {
-            background-color: red;
+            background-color: @color-pink;
           }
 
           .border {
-            background-color: black;
+            background-color: @color-dark;
           }
 
           .padding {
-            background-color: blue;
+            background-color: @color-blue;
           }
 
           .text {
-            background-color: yellow;
+            background-color: @color-yellow;
           }
 
           .description {
+            .border-radius;
             padding: 0.2em 1em;
             color: #f7f7f7;
             &.text {
@@ -308,9 +383,9 @@
           }
         }
 
+        .slide--with-image {
 
-
-
+        }
       }
     </style>
 
@@ -334,7 +409,7 @@ class: slide-agenda
 ## 2. Layout
 ## 3. Structure
 ## 4. Tips & Tricks
-## 5. The new hotness
+## 5. CSS3
 ]
 
 ---
@@ -345,43 +420,121 @@ template: inverse
 ---
 
 # HTML
+### Structure
 
-## Everything is a box
-## Todo bilde?
+```html
+<!DOCTYPE html>
+<html>
+   <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>HTML and CSS</title>
+  </head>
+  <body>
+    <div>
+      <h1>An HTML page!</h1>
+    </div>
+    <div>
+      <p>A paragraph.</p>
+      <p>Another paragraph.</p>
+    </div>
+  </body>
+</html>
+```
+
+---
+class: middle center slide--with-image
+
+# Rendered HTML
+.img--large[
+<img src="resultat uten css.png">
+]
 
 ---
 
-# HTML & CSS
-.task[ Gjør overskrifter til fargen `#333`! ]
-
-```html
-<div>
-  <p> This is a paragraph. </p>
-</div>
-```
+# CSS
+### Style
 
 ```css
-  p {
-    color: red;
-  }
+h1 {
+  background-color: #1df;
+}
+
+p {
+  background-color: #f1d;
+  color: white;
+}
 ```
+
+---
+
+class: middle center slide--with-image
+
+# Rendered HTML with CSS
+.img--large[
+<img src="resultat med css.png">
+]
+
+---
+class: middle center
+
+# Everything is a box!
+
+---
+class: slide-boxmodel
+
+# Box model
+.boxmodel[
+.box.margin[
+.box.border[
+.box.padding[
+.box.text[
+Boxmodel
+]]]]]
+
+.description.margin[Margin]
+.description.border[Border]
+.description.padding[Padding]
+.description.text[Content]
 
 ---
 class: center middle slide-selectors
 
-# A CSS selector
+# CSS selector
 .selector[
 ```css
-element#id.class:pseudo-selector[attribute-selector] {
+input#anId.aClass:checked[name="aName"] {
   property: value;
 }
+```
+```html
+<input id="anId" class="aClass" type="checkbox" name="aName" />
 ```
 ]
 
 ---
+
+
+# Where do I put it?
+### External stylesheet
+```html
+<link rel="stylesheet" type="text/css" href="layout.css" />
+```
+
+### Style element
+```html
+<style>
+  p { color: blue; }
+</style>
+```
+### Inline attribute
+```html
+<p style="color: blue;"> </p>
+```
+
+---
 class: slide-priority
 
-# Priority
+# Styles have different priority
 .arrow[
 
 ### Increasing priority
@@ -390,19 +543,61 @@ class: slide-priority
 ]
 .priorities[
 
+.predefined[
 ### Browser
+]
+.predefined[
 ### User
+]
+.in-page[
 ### `<link>`
+]
+.in-page[
 ### `<style>`
-### Inline `style` attribute
+]
+.in-page[
+### `<p style="">`
+]
 
 ]
 
+---
+
+# CSS - Cascading Style Sheets
+### Cascading properties
+Some css selector
+
+```css
+.alert-box {
+  border: 1px solid red;
+}
+```
+
+..and later the same selector again..
+
+```css
+.alert-box {
+  padding: 1em;
+}
+```
+
+---
+
+# Properties cascade!
+
+```css
+.alert-box {
+  border: 1px solid red;
+  padding: 1em;
+}
+```
 
 ---
 class: middle center slide-specificity
 
 # Specificity
+
+### "Which CSS rule is applied?"
 
 <ul class="specificity specificity--large">
   <li>0
@@ -414,7 +609,6 @@ class: middle center slide-specificity
 ---
 
 #Specificity
-.task[]
 ```css
 p {
   color: green;
@@ -452,10 +646,39 @@ p.error {
 </ul>
 
 ---
+# important!
+
+```css
+#comments .comment .meta {
+  color: red;
+}
+```
+<ul class="specificity">
+  <li>0
+  <li>1
+  <li>2
+  <li>0
+</ul>
+
+
+### ...
+
+```css
+.author {
+  color: black !important;
+}
+```
+<ul class="specificity specificity--important">
+  <li>1
+  <li>0
+  <li>0
+  <li>1
+  <li>0
+</ul>
+---
 
 #Specificity
-.task[]
-
+.task[Hvorfor blir overskrifter i footeren grå?]
 ```css
 .highlight.important {
   color: orange;
@@ -481,35 +704,22 @@ p.error {
 </ul>
 
 ---
-# Cascading properties
-Some css selector
 
-```css
-.alert-box {
-  border: 1px solid red;
-}
-```
+# specificity fisk
 
-..and later the same selector again..
-
-```css
-.alert-box {
-  padding: 1em;
-}
-```
+TODO
 
 ---
 
-# Cascading properties
-.task[Finn ut hvorfor TODO stil får stilen TODO property]
-The properties cascade!
+# specificity starwars
 
-```css
-.alert-box {
-  border: 1px solid red;
-  padding: 1em;
-}
-```
+TODO
+
+---
+
+# specificity konsulent
+
+TODO
 
 ---
 
@@ -581,24 +791,6 @@ class: middle center
 * Act like `display: inline`
   * But can have a defined width and height as `display: block`
 * IE8+
-
----
-class: slide-boxmodel
-
-# The box model
-.boxmodel[
-.box.margin[
-.box.border[
-.box.padding[
-.box.text[
-Boxmodel
-]]]]]
-
-
-.description.margin[Margin]
-.description.border[Border]
-.description.padding[Padding]
-.description.text[Content]
 
 ---
 template: inverse
