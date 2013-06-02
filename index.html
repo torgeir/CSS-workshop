@@ -102,6 +102,10 @@
 
       .remark-slide-content {
 
+        li p {
+          margin: 0;
+        }
+
         code {
           .border-radius(0.2em);
           font-size: 0.75em;
@@ -750,48 +754,66 @@ template: inverse
 ---
 class: middle center
 
-# The display property
+# The `display` property
 `block` `inline` `none` `inline-block`
 
 ---
 
-# Display: block;
-* Some elements default to `display: block`
-  * `<div>`
-  * `<p>`
-  * `<form>`
-* Starts with a new line
-* Fills it's container
-* `width` modifiable
+# display: block;
+### New line
+### Fills it's container
+### Has width and height - `width` and `height` are modifiable
+### Some elements default to this value `<div>`  `<p>` `<form>`
 
 ---
 
-# Display: inline;
-* Some elements default to `display: inline`
-  * `<span>`
-  * `<a>`
-  * `<img>`
-* Does not disrupt flow
-* Has no `width`!
-  * Uses the amount of space that the content needs
-* `width` not modifiable
+# display: inline;
+### Does not disrupt text-flow
+```html
+<p>Some text with a <a href="/site">link</a></p>
+```
+"Some text with a <a href="/site">link</a>"
+
+### Has no width or height! - `width` and `height` are not modifiable
+### Some elements default to this value `<span>` `<a>` `<img>` 
+
+---
+name: displaynone
+class: slide-displaynone
+
+# display: none;
+### Used to hide element
+### Rendered as no element existed
+### Some elements default to this value `<script>` `<style>`
+
+---
+template: displaynone
+
+## Trivia
+```html
+<style style="display: block" contenteditable>
+  .slide-displaynone { }
+</style>
+```
+
+<style style="display: block" contenteditable>
+  .slide-displaynone { }
+</style>
 
 ---
 
-# Display: none;
-* Some elements default to `display: none`
-  * `<script>`
-  * `<head>`
-* Used to hide element
-* Rendered as no element existed
+# display: inline-block;
+### Acts like `display: inline`
+### Can have a defined width and height! Like `display: block`
+### No elements have this value as default
 
 ---
 
-# Display: inline-block;
-* No elements have `display: inline-block` as default!
-* Act like `display: inline`
-  * But can have a defined width and height as `display: block`
-* IE8+
+# Float
+
+---
+
+# Position
 
 ---
 template: inverse
