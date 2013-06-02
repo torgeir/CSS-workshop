@@ -166,7 +166,7 @@
 
       .task {
         .border-radius;
-        max-width: 40%;
+        max-width: 50%;
         position: absolute;
         top: 1em;
         right: 1em;
@@ -177,6 +177,13 @@
         font-family: 'Yanone Kaffeesatz';
         font-size: 1.2em;
 
+      }
+
+      .task--inline {
+        padding-top: 0;
+        padding-bottom: 0;
+        position: static;
+        max-width: none;
       }
 
       .specificity {
@@ -864,8 +871,22 @@ p {
 
 ---
 
+# Float
+.task[Style `nav` slik at alle menyelementer kommer på en rekke]
+
+---
+
+# Clearing floats
+
+---
+
+# Clearing floats
+.task[Style `.nyhet` slik at nyheter vises i to kolonner.]
+
+---
+
 # Positioning
-.task[Posisjoner `<aside>` side om side med `<section class="innhold">`.]
+.task[Få søkeboksen helt til høyre i menyen med posisjonering.]
 
 ### static
 ### static
@@ -876,20 +897,6 @@ p {
 template: inverse
 
 # Structure
-
----
-class: middle center
-.half-width[
-# OOCSS
-### Separate structure from skin
-### Separate container from content
-]
-.half-width[
-# SMACSS
-### Categorization
-### Naming
-### Decoupling
-]
 
 ---
 name: wrong
@@ -960,74 +967,6 @@ p.success {
 p.success {
   background-color: green;
 }
-```
-
-
----
-
-# An example
-
-```html
-<ul class="navigation">
-  <li><a>Fishing</a>
-  <li><a>Hunting</a>
-</ul>
-```
-
-```css
-.navigation { }
-.navigation li { }
-.navigation li a { }
-```
-
----
-class: middle center
-
-# "How about we show subcategories when our users hover Fishing!?"
-
----
-
-# Ehh
-
-```html
-<ul class="navigation">
-  <li><a>Fishing</a>
-    <ul>
-      <li><a>Salmon</a>
-      <li><a>Trout</a>
-    </ul>
-  <li><a>Hunting</a>
-</ul>
-```
-
-```css
-.navigation { }
-.navigation li { }
-.navigation li a { }
-.navigation li li { }
-.navigation li li a { }
-```
-
----
-
-# Child-selectors!
-## Only affect direct children
-
-```html
-<ul class="navigation">
-  <li><a>Fishing</a>
-    <ul>
-      <li><a>Salmon</a>
-      <li><a>Trout</a>
-    </ul>
-  <li><a>Hunting</a>
-</ul>
-```
-
-```css
-.navigation { }
-.navigation > li { }
-.navigation > li > a { }
 ```
 
 ---
@@ -1119,6 +1058,7 @@ class: middle center
 ---
 
 # Reusable!
+.task[Style `.nyhet` slik at den kan tåle endringer i html!]
 
 ```html
 <section class="module">
@@ -1140,6 +1080,73 @@ class: middle center
   </div>
 </section>
 ```
+
+---
+
+# Reusable?
+
+## Oppgaver
+
+.task.task--inline[
+### 1 - Endre `div.nyhet` til `article.nyhet`
+
+### 2 - Endre publiseringsdato fra `span` til `time`
+
+### 3 - Det skal være to paragrafer ingress, men bare den første skal ha toppmarg!
+]
+
+
+---
+template: inverse
+
+# Hvem måtte endre i css'en?
+
+---
+name: menus
+
+# Oppgave
+.task.task--inline[
+### "Toppnivåmenyen må være uppercase!"
+]
+
+```html
+<ul class="meny">
+  <li><a>Nyheter</a>
+    <ul>
+      <li><a>Innenriks</a>
+      <li><a>Utenriks</a>
+    </ul>
+  <li><a>Sport</a>
+</ul>
+```
+
+### Hint: `text-transform`
+
+---
+
+# Løsning?
+
+```css
+.meny li {
+  text-transform: uppercase;
+}
+
+.meny li li {
+  text-transform: none;
+}
+```
+
+---
+
+# Child-selectors!
+## Only affect direct children
+
+```css
+.meny > li {
+  text-decoration: uppercase;
+}
+```
+
 ---
 
 # Extend
@@ -1177,6 +1184,12 @@ class: middle center
 ## +++
 
 ---
+class: middle
+.task[Vis logoen `logo.png` til venstre for teksten "Norges eldste avis". Tips: `padding-left`.]
+
+## Bruk `background` til bilder som har med layout å gjøre
+
+---
 class: middle center
 
 # box-sizing: border-box;
@@ -1209,7 +1222,7 @@ class: middle center
 ---
 class: middle center
 
-# :nth-child(odd)
+# :nth-child()
 
 ---
     </textarea>
