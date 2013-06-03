@@ -1043,6 +1043,7 @@ template: clearingfloats1
 
 
 TODO torgeir løsning på denne oppgaven må inn i løsningsforslaget
+TODO torgeir annen bakgrunnsfarge på .meny
 
 .task[Fiks at `span`en med publiseringsdato for `.nyhet` havner over nyhetsoverskriften.]
 
@@ -1103,7 +1104,7 @@ TODO torgeir løsning på denne oppgaven må inn i løsningsforslaget
 ---
 
 # Clearfix
-.task[1 - Style `.nyhet` slik at nyheter vises i to kolonner.<br>2 - Style `.meny` slik at alle menyelementer kommer på en rekke og gi `.meny` en bakgrunnsfarge.]
+.task[1 - Style `.nyhet` slik at nyheter vises i to kolonner. (Hint: her må du bruke en `nth-child`, som du allerede finner i koden!)<br>2 - Style `.meny` slik at alle menyelementer kommer på en rekke og gi `.meny` en bakgrunnsfarge.]
 
 ## Result
 .center[
@@ -1478,6 +1479,7 @@ class: middle
 
 ---
 class: middle center
+.task[Bildene er alt for store! Fiks det med `max-width`.]
 
 # max-width
 
@@ -1490,16 +1492,22 @@ class: middle center
 class: middle center
 
 # :nth-child()
-
----
-class: middle center
-
-# :before, :after
+### :nth-child(event)
+### :nth-child(odd)
+### :nth-child(2n)
+### :nth-child(2n+1)
+### :nth-child(7n-2)
 
 ---
 class: middle center
 
 # transform
+### rotate(2deg)
+### scale(1.5)
+### skew(20deg)
+### translate(..)
+
+TODO eirik lag eksempel
 
 ---
 class: middle center
@@ -1509,9 +1517,27 @@ class: middle center
 ---
 class: middle center
 
-# multiple backgrounds
+# :before, :after
 
 ---
+class: middle center
+
+# multiple backgrounds
+
+TODO eirik lag eksempel
+
+---
+class: middle center
+
+# LESS.js
+### variables
+### mixins, with arguments
+### nesting
+### color helpers
+### +++
+
+---
+
     </textarea>
     <script src="less-1.4.0-beta.js"></script>
     <script src="remark-0.5.1-beta.js"></script>
