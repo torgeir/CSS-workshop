@@ -1015,13 +1015,53 @@ NOTE: Floated `block`-elements gets its contents width
 ]
 
 ---
-# Positioning
+
+class: middle center
+
+# The `position` property
+`static` `relative` `absolute` `fixed`
+
+---
+# position: static;
+
+### Default value
+### Said to be 'non-positioned'
+### Can not be positioned with `top:`, `right:`, `bottom:`, `left:`
+
+---
+
+# position: realtive;
+
+### Element is positioned at its `static`-position
+### Offset by the value set on `top:`, `right:`, `bottom:`, `left:`
+### Other content is uneffected
+
+```html
+<div style="border: 1px solid #fd1; width: 200px;">
+	<div style="position: relative; top: 10px; right: 10px; border: 1px solid #f1d">
+		This is the first child</div>
+	<div style="border: 1px solid #1fd">This is the second child</div>
+</div>
+```
+<div style="border: 1px solid #fd1; width: 200px;">
+	<div style="position: relative; top: 10px; right: 10px; border: 1px solid #f1d">This is the first child</div>
+	<div style="border: 1px solid #1fd">This is the second child</div>
+</div>
+---
+
+# position: absolute;
+
+### Is positioned realtive to nearest positioned parent or `<body>`
+### `top:`, `right:`, `bottom:`, `left:` used to set the distance between the `absolute` element and the edges of the positioned parent
+### Other content is rendered as the `absolute` element does not exists as long as both a vertical (`top:`/`bottom:`) and a horizontal (`left:`/`right:`) position is set
+
+TODO Eksempel
+--- 
+# `position: fixed`
 .task[Få søkeboksen helt til høyre i menyen med posisjonering.]
 
-### static
-### relative
-### absolute
-### fixed
+### Acts like `position: absolute` but is positioned relative to the viewport.
+
 
 ---
 template: inverse
