@@ -770,7 +770,7 @@ a {
 </ul>
 ---
 
-TODO torgeir bilde
+TODO torgeir bilde av masse !important
 
 ---
 class: middle center
@@ -927,7 +927,7 @@ name: boxmodel2
 ## Property `width` sets the width of the .text[Content], not the entire box!
 
 
-todo torgeir fiks style.css i master
+TODO torgeir fiks så de har en tom style.css i master, ikke LF!!!
 ---
 template: boxmodel2
 name: boxmodel3
@@ -960,10 +960,15 @@ class: middle center
 ]
 
 ---
+class: middle center
 
 # Float
 
-Meant for floating images so that text can wrap around it
+---
+name: float
+
+# Float
+### Wrapping text around images
 
 ```html
 <p>
@@ -981,54 +986,65 @@ img {
 ]
 
 ---
+template: float
 
-# Float
 .task[Float `.nyhet` sin `span` med publiseringsdato helt til høyre.]
-
-
-### Using float for layout and positioning is a hack. But it works.
-
 ---
+name: float2
 
 # Float
-.task[Få footeren til å ha to kolonner, med hver sin liste.]
 
 ### Content laid out
 ### Floated element taken out of flow
 ### Inserted and floated to either side
 ### Content recedes
 
-.center[
-<img src="float2-before.png" /><img src="float2-after.png" />
+.half-width[
+<img src="float2-before.png" />
 ]
+.half-width[
+<img src="float2-after.png" />
+]
+---
+template: float2
+
+.task[Få `footer`en til å ha to kolonner, med hver sin liste.]
 
 ---
 
-
 # Clearing floats
-.task[Fiks at `span`en med publiseringsdato for `.nyhet` havner over teksten.]
 
 ## `clear:`
 ### `left` - No floating elements to the left of me!
 ### `right` - No floating elements to the right of me!
 ### `both` - No floating elements to either side of me!
 
-
 ---
+name: clearingfloats1
 
 # Clearing floats
-.task[Style `.nyhet` slik at nyheter vises i to kolonner.]
 
+<br>
 ```css
 .div4 {
   clear: left;
 }
 ```
 
-.center[
+.half-width[
 <img src="clear1-before.png" />
+]
+.half-width[
 <img src="clear1-after.png" />
 ]
+
+---
+template: clearingfloats1
+
+
+TODO torgeir løsning på denne oppgaven må inn i løsningsforslaget
+
+.task[Fiks at `span`en med publiseringsdato for `.nyhet` havner over nyhetsoverskriften.]
 
 ---
 
@@ -1087,7 +1103,7 @@ img {
 ---
 
 # Clearfix
-.task[Style `.meny` slik at alle menyelementer kommer på en rekke og gi `.meny` en bakgrunnsfarge.]
+.task[1 - Style `.nyhet` slik at nyheter vises i to kolonner.<br>2 - Style `.meny` slik at alle menyelementer kommer på en rekke og gi `.meny` en bakgrunnsfarge.]
 
 ## Result
 .center[
@@ -1106,16 +1122,16 @@ class: middle center
 
 ### Default value
 ### Said to be 'non-positioned'
-### Can not be positioned with `top`, `right`, `bottom`, `left`
+### Can not be offset with `top`, `right`, `bottom`, `left`
 
 ---
 
 # position: relative;
 
 ### Defaults to `static` position
-### Other content is uneffected
 ### Offset from static position
 `top` `right` `bottom` `left`
+### Other content is uneffected
 
 ```html
 <div style="border: 1px solid #fd1; width: 200px;">
@@ -1134,7 +1150,7 @@ class: middle center
 
 ### Defaults to `static` position
 ### **Relative** to nearest positioned parent
-### Can be **offset** from edges of parent
+### **Offset** from edges of parent
 `top` `right` `bottom` `left`
 
 ```html
@@ -1156,13 +1172,17 @@ class: middle center
 </div>
 
 ---
+name: fixed
 
 # position: fixed;
-.task[Få søkeboksen helt til høyre i menyen med posisjonering.]
 
 ### Like `position: absolute`
-### Positioned **relative** to the viewport.
+### **Relative** to the viewport
 
+---
+template: fixed
+
+.task[Få søkeboksen helt til høyre i menyen med posisjonering.]
 
 ---
 template: inverse
@@ -1193,16 +1213,17 @@ p.green {
 
 # Naming
 
-## Name after what it is!
+## Not after how it's styled
 ```css
-p.success {
+p.green {
   background-color: green;
 }
 ```
 
-## Not how it's styled
+
+## Name after what it is!
 ```css
-p.green {
+p.success {
   background-color: green;
 }
 ```
@@ -1226,16 +1247,16 @@ p.success {
 
 # Coupled HTML and CSS!
 
-## Witouth a tagname, it's less specific
+## Don't do
 ```css
-.success {
+p.success {
   background-color: green;
 }
 ```
 
-## Don't do
+## Witouth a tagname, it's less specific!
 ```css
-p.success {
+.success {
   background-color: green;
 }
 ```
@@ -1327,9 +1348,9 @@ p.success {
 ```
 
 ---
+name: reusable
 
 # Reusable!
-.task[Style `.nyhet` slik at den kan tåle endringer i html!]
 
 ```html
 <section class="module">
@@ -1353,6 +1374,11 @@ p.success {
 ```
 
 ---
+template: reusable
+
+.task[Style `.nyhet` slik at den kan tåle endringer i html!]
+
+---
 
 # Reusable?
 
@@ -1370,7 +1396,7 @@ p.success {
 ---
 template: inverse
 
-# Hvem måtte endre i css'en?
+# Hvem måtte endre i CSS'en?
 
 ---
 name: menus
@@ -1445,6 +1471,7 @@ template: inverse
 
 ---
 class: middle
+
 .task[Vis logoen `logo.png` til venstre for teksten "Norges eldste avis". Tips: `padding-left`.]
 
 ## Bruk `background` til bilder som har med layout å gjøre
@@ -1453,6 +1480,16 @@ class: middle
 class: middle center
 
 # max-width
+
+---
+class: middle center
+
+# :first-child, :last-child
+
+---
+class: middle center
+
+# :nth-child()
 
 ---
 class: middle center
@@ -1472,17 +1509,7 @@ class: middle center
 ---
 class: middle center
 
-# :first-child, :last-child
-
----
-class: middle center
-
 # multiple backgrounds
-
----
-class: middle center
-
-# :nth-child()
 
 ---
     </textarea>
