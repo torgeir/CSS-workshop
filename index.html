@@ -146,7 +146,7 @@
           &:before {
             content: attr(class);
             text-transform: uppercase;
-            color: #555;
+            color: #999;
             position: absolute;
             top: 0.5em;
             right: 1em;
@@ -402,6 +402,12 @@
           }
         }
 
+        .slide-oppgaver {
+          code {
+            text-align: left;
+          }
+        }
+
         .slide--with-image {
 
         }
@@ -427,8 +433,7 @@ class: slide-agenda
 ## 1. Introduction to CSS
 ## 2. Layout
 ## 3. Structure
-## 4. Tips & Tricks
-## 5. CSS3
+## 4. Tips & Tricks, CSS3
 ]
 
 ---
@@ -548,7 +553,7 @@ input#anId.aClass:checked[name="aName"] {
 ```
 ### Inline attribute
 ```html
-<p style="color: blue;"> </p>
+<p style="color: green;"> </p>
 ```
 
 ---
@@ -584,20 +589,19 @@ class: slide-priority
 ---
 
 # CSS - Cascading Style Sheets
-### Cascading properties
 Some css selector
 
 ```css
-.alert-box {
-  border: 1px solid red;
+h1 {
+  margin: 10px;
 }
 ```
 
 ..and later the same selector again..
 
 ```css
-.alert-box {
-  padding: 1em;
+h1.fin-overskrift {
+  color: green;
 }
 ```
 
@@ -606,11 +610,16 @@ Some css selector
 # Properties cascade!
 
 ```css
-.alert-box {
-  border: 1px solid red;
-  padding: 1em;
+h1.fin-overskrift {
+  margin: 10px;
+  color: green;
 }
 ```
+
+---
+class: middle center
+
+# "The same property can be in multiple places?"
 
 ---
 class: middle center slide-specificity
@@ -653,6 +662,37 @@ p {
   <li>0
 </ul>
 
+```html
+<p class="highlighted"></p>
+```
+
+---
+
+# Specificity
+```css
+p {
+  color: green;
+}
+```
+<ul class="specificity">
+  <li>0
+  <li>0
+  <li>0
+  <li>1
+</ul>
+
+```css
+.highlighted {
+  color: yellow;
+}
+```
+<ul class="specificity">
+  <li>0
+  <li>0
+  <li>1
+  <li>0
+</ul>
+
 ```css
 p.error {
   color: red;
@@ -665,64 +705,72 @@ p.error {
   <li>1
 </ul>
 
+```html
+<p class="error highlighted"></p>
+```
+
+---
+
+# Oppgaver
+.task.task--inline[
+## Finn specificity for
+]
+```html
+<a style="color: blue;" class="fancy-link">link</a>
+```
+```css
+.menu ul li.menu-item { }
+```
+```css
+#navigation.menu ul li.menu-item a { }
+```
+```css
+a {
+  color: red !important;
+}
+```
+
 ---
 # important!
-.task[TODO eirik oppgave - Fiks CSSen så vi ikke trenger `!important`!]
-
 ```css
-#comments .comment .meta {
-  color: red;
-}
-```
-<ul class="specificity">
-  <li>0
-  <li>1
-  <li>2
-  <li>0
-</ul>
-
-
-### ...
-
-```css
-.author {
-  color: black !important;
-}
-```
-<ul class="specificity specificity--important">
-  <li>1
-  <li>0
-  <li>0
-  <li>1
-  <li>0
-</ul>
----
-
-#Specificity
-.task[TODO eirik - enda en oppgave med specificity?]
-```css
-.highlight.important {
-  color: orange;
+.menu ul li.menu-item {
+  color: yellow;
 }
 ```
 <ul class="specificity">
   <li>0
   <li>0
   <li>2
-  <li>0
+  <li>2
 </ul>
 
 ```css
-#menu {
+#navigation.menu ul li.menu-item a {
   color: blue;
 }
 ```
 <ul class="specificity">
   <li>0
   <li>1
-  <li>0
-  <li>0
+  <li>2
+  <li>3
 </ul>
+
+```css
+a {
+  color: red !important;
+}
+```
+<ul class="specificity specificity--important">
+  <li>1
+  <li>0
+  <li>0
+  <li>0
+  <li>1
+</ul>
+---
+
+TODO torgeir bilde
 
 ---
 class: middle center
@@ -743,8 +791,39 @@ class: middle center
 
 ```css
 font-size: inherit;
+```
+```css
 color: inherit;
 ```
+
+---
+class: middle center slide-oppgaver
+
+# Oppgavetema
+
+.task.task--inline[
+## Lag CSS for "adressa.no"
+]
+
+```bash
+git clone https://github.com/sorteberg/CSS-workshop
+```
+
+```bash
+$ tree
+.
+├── index.html
+├── logo.png
+└── style.css
+```
+
+---
+
+# Oppgave
+.task.task--inline[
+## Sentrer `.container`, så innholdet er maks 900px.
+]
+### Hint: `max-width` `margin`
 
 ---
 template: inverse
@@ -768,28 +847,29 @@ class: middle center
 ```
 <p>"Some text"</p>
 <p>"Some more text"</p>
+### Some elements default to this value `<p>` `<div>` `<form>` `...`
 ### Has width and height - `width` and `height` are modifiable
-### Some elements default to this value `<div>`  `<p>` `<form>`
 
 ---
 
 # display: inline;
+### Width of its content
 ### Does not disrupt text-flow
 ```html
-<p>Some text with a <a href="/site">link</a></p>
+<p>Some text with a <a href="/site">link</a> inside</p>
 ```
-"Some text with a <a href="/site">link</a>"
+"Some text with a <a href="/site">link</a> inside"
 
-### Has no width or height! - `width` and `height` are not modifiable
-### Some elements default to this value `<span>` `<a>` `<img>`
+### Some elements default to this value `<a>` `<span>` `<img>`
+### `width` and `height` are not modifiable
 
 ---
 name: displaynone
 class: slide-displaynone
 
 # display: none;
+### Rendered as no element existed, but it's still there
 ### Used to hide element
-### Rendered as no element existed
 ### Some elements default to this value `<script>` `<style>`
 
 ---
@@ -810,40 +890,9 @@ template: displaynone
 
 # display: inline-block;
 ### Acts like `display: inline`
-### Can have a defined width and height! Like `display: block`
+### `width` and `height` are modifiable, like `display: block`
 ### No elements have this value as default
 
----
-
-# Oppgave
-.task.task--inline[
-## Sentrer `.container`, så innholdet er maks 900px.
-]
-### Hint: `max-width` `margin`
-
----
-template: boxmodel
-name: boxmodel2
-
-## Property `width` sets the width of the .text[Content], not the entire box!
-
----
-template: boxmodel2
-name: boxmodel3
-
-.half-width[
-```css
-.box {
-  width: 50px;
-  padding: 10px;
-  border: 1px solid black;
-}
-```
-]
-
-.center[
-`width = 50px + 10px + 10px + 1px + 1px = 72px`
-]
 
 ---
 
@@ -858,16 +907,56 @@ name: boxmodel3
 ```
 ```css
 h1 {
-  margin: 40px;
+  margin: 40px 0;
 }
 
 p {
-  margin: 20px;
+  margin: 20px 0;
 }
 ```
 ]
 .half-width[
 <img src="collapsingmargins.png">
+]
+
+---
+
+template: boxmodel
+name: boxmodel2
+
+## Property `width` sets the width of the .text[Content], not the entire box!
+
+
+todo torgeir fiks style.css i master
+---
+template: boxmodel2
+name: boxmodel3
+.task[Hvor bred blir `.box`?]
+
+.half-width[
+```css
+.box {
+  width: 50px;
+  padding: 10px;
+  border: 1px solid black;
+}
+```
+]
+
+---
+template: boxmodel3
+
+.center[
+`width = 50px + 10px + 10px + 1px + 1px = 72px`
+]
+
+---
+class: middle center
+
+# box-sizing: border-box;
+
+.center[
+`width = 50px`
 ]
 
 ---
@@ -1364,11 +1453,6 @@ class: middle
 class: middle center
 
 # max-width
-
----
-class: middle center
-
-# box-sizing: border-box;
 
 ---
 class: middle center
