@@ -739,20 +739,11 @@ class: middle center
 
 # Inherited properties
 
-Some properties have a value `inherit`
+## Some properties have a default value `inherit`
+
 ```css
 font-size: inherit;
 color: inherit;
-```
-
-But `background-color` is not!
-```css
-background-color: transparent;
-```
-
-You can force it, however
-```css
-background-color: inherit;
 ```
 
 ---
@@ -905,7 +896,6 @@ img {
 # Float
 .task[Float `.nyhet` sin `span` med publiseringsdato helt til høyre.]
 
-## `float: none / left / right`
 
 ### Using float for layout and positioning is a hack. But it works.
 
@@ -914,13 +904,14 @@ img {
 # Float
 .task[Få footeren til å ha to kolonner, med hver sin liste.]
 
-## Think about it as if the browser first renders the page without the floated elements - then squeezes them into the page at the elements intended vertical position. Content recedes. TODO: Bedre setning.
+### Content laid out
+### Floated element taken out of flow
+### Inserted and floated to either side
+### Content recedes
 
 .center[
 <img src="float2-before.png" /><img src="float2-after.png" />
 ]
-
-NOTE: Floated `block`-elements gets its contents width
 
 ---
 
@@ -1026,15 +1017,16 @@ class: middle center
 
 ### Default value
 ### Said to be 'non-positioned'
-### Can not be positioned with `top:`, `right:`, `bottom:`, `left:`
+### Can not be positioned with `top`, `right`, `bottom`, `left`
 
 ---
 
-# position: realtive;
+# position: relative;
 
-### Element is positioned at its `static`-position
-### Offset by the value set on `top:`, `right:`, `bottom:`, `left:`
+### Defaults to `static` position
 ### Other content is uneffected
+### Offset from static position
+`top` `right` `bottom` `left`
 
 ```html
 <div style="border: 1px solid #fd1; width: 200px;">
@@ -1051,30 +1043,36 @@ class: middle center
 
 # position: absolute;
 
-### Is positioned realtive to nearest positioned parent or `<body>`
-### `top:`, `right:`, `bottom:`, `left:` used to set the distance between the `absolute` element and the edges of the positioned parent
-### Other content is rendered as the `absolute` element does not exists as long as both a vertical (`top:`/`bottom:`) and a horizontal (`left:`/`right:`) position is set
+### Defaults to `static` position
+### **Relative** to nearest positioned parent
+### Can be **offset** from edges of parent
+`top` `right` `bottom` `left`
 
 ```html
 <div style="position: relative; border: 1px solid #f1d; width: 100%; height: 100px;">
-	<div style="position: absolute; right: 10px; bottom: 10px; border: 1px solid #1df;">
-		I am an absolutely positioned div!
-	</div>
+	<div style="position: absolute; bottom: 10px; border: 1px solid #1df;">
+          Offset from top </div>
+        <div style="position: absolute; bottom: 0; right: 0; border: 1px solid #1fd;">
+          Bottom right</div>
 </div>
 ```
 
 <div style="position: relative; border: 1px solid #f1d; width: 100%; height: 100px;">
-	<div style="position: absolute; right: 10px; bottom: 10px; border: 1px solid #1df;">
-		I am an absolutely positioned div!
+	<div style="position: absolute; bottom: 10px; border: 1px solid #1df;">
+          Offset from top
 	</div>
+        <div style="position: absolute; bottom: 0; right: 0; border: 1px solid #1fd;">
+          Bottom right
+        </div>
 </div>
 
 ---
 
-# `position: fixed`
+# position: fixed;
 .task[Få søkeboksen helt til høyre i menyen med posisjonering.]
 
-### Acts like `position: absolute` but is positioned relative to the viewport.
+### Like `position: absolute`
+### Positioned **relative** to the viewport.
 
 
 ---
