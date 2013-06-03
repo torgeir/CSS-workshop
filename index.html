@@ -881,7 +881,44 @@ p {
 ---
 
 # Float
+
+Ment for floating elements so that text can wrap around it
+
+```html
+<p> 
+	<img src="smile.png" alt="This is the image" /> This is som text that should wrap around the image.
+</p>
+```
+
+```css
+img {
+	float: left;
+}
+```
+.center[
+<img src="float1-nofloat.png" /><img src="float1.png" />
+]
+
+---
+
+# Float
+
+## `float: none / left / right`
+
+### Using float for layout and positioning is a hack. But it works.
+
+---
+
+# Float
 .task[Få footeren til å ha to kolonner, med hver sin liste.]
+
+## Think about it as if the browser first renders the page without the floated elements - then squeezes them into the page at the elements intended vertical position. Content recedes. TODO: Bedre setning.
+
+.center[
+<img src="float2-before.png" /><img src="float2-after.png" />
+]
+
+NOTE: Floated `block`-elements gets its contents width
 
 ---
 
@@ -892,13 +929,92 @@ p {
 
 # Clearing floats
 
+## `clear:`
+### `left` - No floating elements to the left of me!
+### `right` - No floating elements to the right of me!
+### `both` - No floating elements to either side of me!
+
+
 ---
 
 # Clearing floats
 .task[Style `.nyhet` slik at nyheter vises i to kolonner.]
 
+```css
+.div4 {
+  clear: left;
+}
+``` 
+
+.center[
+<img src="clear1-before.png" />
+<img src="clear1-after.png" />
+]
+
 ---
 
+# Clearfix
+
+## What happens when we have 
+```html
+<div class="parent">
+	<div class="child child--first">I am the 1st child. I am oldest and therefore use more space</div>
+	<div class="child child--second">I am the 2nd child</div>
+</div>
+```
+
+```css
+.child {
+	width: 50%;
+}
+.child--first {
+	float: right;
+}
+```
+
+---
+
+# Clearfix
+
+## Result
+.center[
+<img src="clearfix1-before.png" />
+]
+
+---
+
+# Clearfix
+
+## We can fix this by setting the `overflow`-property on the `.parent`
+```html
+<div class="parent">
+	<div class="child child--first">I am the 1st child. I am oldest and therefore use more space</div>
+	<div class="child child--second">I am the 2nd child</div>
+</div>
+```
+
+```css
+.parent {
+	overflow: auto; /* Clearfix */
+}
+.child {
+	width: 50%;
+}
+.child--first {
+	float: right;
+}
+```
+
+---
+
+# Clearfix
+
+## Result
+.center[
+<img src="clearfix1-after.png" />
+]
+
+---
 # Positioning
 .task[Få søkeboksen helt til høyre i menyen med posisjonering.]
 
