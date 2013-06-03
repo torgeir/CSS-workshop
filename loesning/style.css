@@ -1,5 +1,5 @@
 /* Global */
-article, aside, section {
+section, article, header, footer {
   display: block;
 }
 

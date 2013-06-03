@@ -882,17 +882,17 @@ p {
 
 # Float
 
-Ment for floating elements so that text can wrap around it
+Meant for floating images so that text can wrap around it
 
 ```html
-<p> 
+<p>
 	<img src="smile.png" alt="This is the image" /> This is som text that should wrap around the image.
 </p>
 ```
 
 ```css
 img {
-	float: left;
+	float: right;
 }
 ```
 .center[
@@ -902,6 +902,7 @@ img {
 ---
 
 # Float
+.task[Float `.nyhet` sin `span` med publiseringsdato helt til høyre.]
 
 ## `float: none / left / right`
 
@@ -922,12 +923,9 @@ NOTE: Floated `block`-elements gets its contents width
 
 ---
 
-# Float
-.task[Style `.meny` slik at alle menyelementer kommer på en rekke]
-
----
 
 # Clearing floats
+.task[Fiks at `span`en med publiseringsdato for `.nyhet` havner over teksten.]
 
 ## `clear:`
 ### `left` - No floating elements to the left of me!
@@ -944,7 +942,7 @@ NOTE: Floated `block`-elements gets its contents width
 .div4 {
   clear: left;
 }
-``` 
+```
 
 .center[
 <img src="clear1-before.png" />
@@ -955,11 +953,11 @@ NOTE: Floated `block`-elements gets its contents width
 
 # Clearfix
 
-## What happens when we have 
+## What happens when we have
 ```html
 <div class="parent">
 	<div class="child child--first">I am the 1st child. I am oldest and therefore use more space</div>
-	<div class="child child--second">I am the 2nd child</div>
+	<div class="child">I am the 2nd child</div>
 </div>
 ```
 
@@ -989,7 +987,7 @@ NOTE: Floated `block`-elements gets its contents width
 ```html
 <div class="parent">
 	<div class="child child--first">I am the 1st child. I am oldest and therefore use more space</div>
-	<div class="child child--second">I am the 2nd child</div>
+	<div class="child">I am the 2nd child</div>
 </div>
 ```
 
@@ -1008,6 +1006,7 @@ NOTE: Floated `block`-elements gets its contents width
 ---
 
 # Clearfix
+.task[Style `.meny` slik at alle menyelementer kommer på en rekke og gi `.meny` en bakgrunnsfarge.]
 
 ## Result
 .center[
@@ -1274,7 +1273,9 @@ p.success {
 .task.task--inline[
 ### 1 - Endre `div.nyhet` til `article.nyhet`
 
-### 2 - Det skal være to paragrafer ingress, men bare den første skal ha toppmarg!
+### 2 - Endre `span` til `time` publiseringsdato.
+
+### 3 - Det skal være to paragrafer ingress, men bare den første skal ha toppmarg!
 ]
 
 
