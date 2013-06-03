@@ -1055,8 +1055,22 @@ class: middle center
 ### `top:`, `right:`, `bottom:`, `left:` used to set the distance between the `absolute` element and the edges of the positioned parent
 ### Other content is rendered as the `absolute` element does not exists as long as both a vertical (`top:`/`bottom:`) and a horizontal (`left:`/`right:`) position is set
 
-TODO Eksempel
---- 
+```html
+<div style="position: relative; border: 1px solid #f1d; width: 100%; height: 100px;">
+	<div style="position: absolute; right: 10px; bottom: 10px; border: 1px solid #1df;">
+		I am an absolutely positioned div!
+	</div>
+</div>
+```
+
+<div style="position: relative; border: 1px solid #f1d; width: 100%; height: 100px;">
+	<div style="position: absolute; right: 10px; bottom: 10px; border: 1px solid #1df;">
+		I am an absolutely positioned div!
+	</div>
+</div>
+
+---
+
 # `position: fixed`
 .task[Få søkeboksen helt til høyre i menyen med posisjonering.]
 
