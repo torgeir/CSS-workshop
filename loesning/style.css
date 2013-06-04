@@ -92,14 +92,17 @@ ul {
 
 .nyhet-overskrift {
   clear: right;
+  color: #333;
 }
 
 .nyhet-bilde {
   max-width: 100%;
+  border: 1px solid #333;
 }
 
 .nyhet-ingress {
   margin-top: 40px;
+  font-style: italic;
 }
 
 
