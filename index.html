@@ -275,7 +275,23 @@
         position: relative;
         top: -5.6em;
       }
+	  
+	  .transition--image {
+		height: 3em;
+		transition: all 2s ease-in-out .5s;
+	  }
+	  .transition--image:hover {
+		-webkit-transform: rotate(180deg);
+	  }
 
+	  .multiplebackgrounds {
+	    margin: 0 auto;
+		height: 200px;
+		width: 400px;
+		background: url(vader.png) no-repeat bottom right, url(Wonderful-Beach.jpg) no-repeat center;
+		background-size: 100px, 400px;
+	  }
+	  
       /* slides */
       .remark-slide {
 
@@ -401,6 +417,10 @@
             }
           }
         }
+		
+		.text-align-left {
+			text-align: left;
+		}
 
         .slide-oppgaver {
           code {
@@ -1495,18 +1515,36 @@ class: middle center
 ---
 class: middle center
 
-# transform
-### rotate(2deg)
-### scale(1.5)
-### skew(20deg)
-### translate(..)
+# transform:
 
-TODO eirik lag eksempel
+.half-width[
+### rotate(25deg) 
+<img src="smile.svg" style="-webkit-transform: rotate(25deg); height: 2em;" />
+### scale(2.1)
+<img src="smile.svg" style="-webkit-transform: scale(2.1); height: 2em;" />
+]
+.half-width[
+### skew(20deg)
+<img src="smile.svg" style="-webkit-transform: skew(20deg); height: 2em;" />
+### translate(100px, 10px)
+<img src="smile.svg" style="-webkit-transform: translate(100px, 10px); height: 2em;" />
+]
 
 ---
 class: middle center
 
 # transition
+.text-align-left[
+```css
+img {
+	transition: all 2s ease-in-out .5s;
+}
+img:hover {
+	transform: rotate(180deg);
+}
+```
+]
+<img src="smile.svg" class="transition--image" />
 
 ---
 class: middle center
@@ -1518,8 +1556,16 @@ class: middle center
 
 # multiple backgrounds
 
-TODO eirik lag eksempel
-
+<div class="multiplebackgrounds">
+</div>
+.text-align-left[
+```css
+div {
+	background: url(vader.png) no-repeat bottom right, url(Wonderful-Beach.jpg) no-repeat center;
+	background-size: 100px, 400px;
+}
+```
+]
 ---
 class: middle center
 
